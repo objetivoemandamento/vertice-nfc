@@ -71,6 +71,21 @@
 @media(max-width:680px){.vitrine{grid-template-columns:1fr}.vitrine-list{padding:12px}.vitrine-list .choice-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.vitrine-choice{margin:0;padding:9px;gap:7px}.choice-icon{width:30px;height:28px}.vitrine-choice strong{font-size:11px}.product-view{min-height:265px}.custom-controls{grid-template-columns:1fr 1fr}.custom-controls .field:first-child{grid-column:1/-1}}
 @media(prefers-reduced-motion:reduce){.product-model{transition:none}}
 
+
+/* Final overrides after audit: consistent two-sided card and rotatable counter display */
+.product-model.card-model,.product-model.plate-model{transform-style:preserve-3d!important}
+.product-model>.face-frente,.product-model>.face-verso{-webkit-backface-visibility:hidden!important;backface-visibility:hidden!important}
+.product-model.card-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important}
+.product-model.card-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important}
+.product-model.card-model>.face-verso .model-qr{grid-template-columns:repeat(9,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:7px!important}
+.product-model.card-model>.face-verso .model-qr i{width:5px!important;height:5px!important}
+.product-model.plate-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important}
+.product-model.plate-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important;display:flex!important;visibility:visible!important;opacity:1!important}
+.product-model.plate-model .plate-base,.product-model.plate-model .plate-rear-foot{transform-style:preserve-3d}
+.product-model.plate-model>.face-verso .back-tools{display:flex!important;align-items:center!important;justify-content:center!important;width:100%;height:100%;gap:18px!important}
+.product-model.plate-model>.face-verso .model-qr{grid-template-columns:repeat(5,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:6px!important}
+.product-model.plate-model>.face-verso .model-qr i{width:5px!important;height:5px!important}
+
 </style>
 </head>
 <body>
@@ -254,12 +269,12 @@ function updateShowcase(){
  document.getElementById("modelTextFront").textContent=(document.getElementById("customText").value.trim()||"SEU NEGÓCIO").slice(0,28).toUpperCase();
  modelEl.style.setProperty("--model-color",document.getElementById("modelColor").value);
  modelEl.style.filter=showcase.type==="plate"?(document.getElementById("modelFinish").value==="Brilhante"?"brightness(1.12) saturate(1.05) drop-shadow(0 20px 18px #0007)":document.getElementById("modelFinish").value==="Metalizado"?"contrast(1.08) saturate(.8) drop-shadow(0 20px 18px #0007)":"drop-shadow(0 20px 18px #0007)"):(document.getElementById("modelFinish").value==="Brilhante"?"brightness(1.2) saturate(1.15) drop-shadow(0 20px 18px #0007)":document.getElementById("modelFinish").value==="Metalizado"?"contrast(1.15) saturate(.7) drop-shadow(0 20px 18px #0007)":"drop-shadow(0 20px 18px #0007)");
- modelEl.style.transform=showcase.type==="plate"?"rotate("+(-5+Math.sin(showcase.ry*Math.PI/180)*2)+"deg)":"rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";
+ modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";
 }
 document.querySelectorAll("[data-model]").forEach(b=>b.addEventListener("click",()=>{showcase.type=b.dataset.model;showcase.custom=b.dataset.custom;updateShowcase();}));
 ["customText","modelColor","modelFinish"].forEach(id=>document.getElementById(id).addEventListener("input",updateShowcase));
 viewEl.addEventListener("pointerdown",e=>{showcase.drag=true;showcase.x=e.clientX;showcase.y=e.clientY;viewEl.setPointerCapture(e.pointerId);});
-viewEl.addEventListener("pointermove",e=>{if(!showcase.drag)return;const dx=e.clientX-showcase.x,dy=e.clientY-showcase.y;showcase.x=e.clientX;showcase.y=e.clientY;showcase.ry+=dx*.7;showcase.rx=Math.max(-180,Math.min(180,showcase.rx-dy*.7));modelEl.style.transform=showcase.type==="plate"?"rotate("+(-5+Math.sin(showcase.ry*Math.PI/180)*2)+"deg)":"rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";});
+viewEl.addEventListener("pointermove",e=>{if(!showcase.drag)return;const dx=e.clientX-showcase.x,dy=e.clientY-showcase.y;showcase.x=e.clientX;showcase.y=e.clientY;showcase.ry+=dx*.7;showcase.rx=Math.max(-180,Math.min(180,showcase.rx-dy*.7));modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";});
 function stopModelDrag(){showcase.drag=false;}
 viewEl.addEventListener("pointerup",stopModelDrag);viewEl.addEventListener("pointercancel",stopModelDrag);viewEl.addEventListener("lostpointercapture",stopModelDrag);
 document.getElementById("modelOrder").addEventListener("click",()=>{const text=document.getElementById("customText").value.trim()||"Não definido";const color=document.getElementById("modelColor").selectedOptions[0].text;const finish=document.getElementById("modelFinish").value;const design=document.getElementById("designMeeting").value;wa("Olá! Quero solicitar orçamento para "+showcase.name+".\nTexto: "+text+"\nCor: "+color+"\nAcabamento: "+finish+"\nDesign: "+design+"\nValor inicial exibido: "+money(showcase.price)+"\nPor favor, confirmem personalização, disponibilidade, prazo e preço final.");});

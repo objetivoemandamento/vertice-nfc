@@ -416,6 +416,56 @@
   .product-model{transition:none!important;will-change:auto}
 }
 
+
+/* Correção focada: verso independente e apoio traseiro visível da placa. */
+.product-model.card-model>.face-frente{
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+}
+.product-model.card-model>.face-verso{
+  transform:rotateY(180deg) translateZ(1.8px)!important;
+  backface-visibility:hidden!important;
+  -webkit-backface-visibility:hidden!important;
+  background:linear-gradient(145deg,#08111a 0%,#102633 58%,#070b11 100%)!important;
+}
+.product-model.card-model>.face-verso>.back-tools{
+  display:flex!important;
+  width:100%!important;height:100%!important;
+  flex-direction:row!important;justify-content:space-evenly!important;
+  align-items:center!important;gap:18px!important;
+}
+.product-model.card-model>.face-verso .model-qr{
+  flex:none!important;background:#fff!important;border:2px solid #fff!important;
+  box-shadow:0 0 0 1px #67e8f9,0 0 12px #67e8f933!important;
+}
+.product-model.card-model>.face-verso .nfc-mark{flex:none!important;color:#67e8f9!important}
+.product-model.plate-model .plate-support{
+  display:block!important;
+  position:absolute!important;
+  left:70px!important;
+  top:195px!important;
+  width:10px!important;
+  height:78px!important;
+  transform-origin:50% 0!important;
+  transform:rotateX(-90deg) rotateZ(-24deg) translateZ(-26px)!important;
+  background:linear-gradient(90deg,#ffffff20,#eaffff9c 38%,#ffffff25 70%,#dffaff72)!important;
+  border:1px solid #eaffffb0!important;
+  box-shadow:0 0 4px #eaffff65!important;
+  z-index:4!important;
+  pointer-events:none!important;
+  backface-visibility:visible!important;
+  -webkit-backface-visibility:visible!important;
+}
+.product-model.plate-model .plate-base{
+  transform:rotateX(-90deg) translateZ(1px)!important;
+}
+.product-model.plate-model .plate-rear-foot{
+  transform:rotateX(-90deg) translateZ(-2px)!important;
+}
+@media(max-width:520px){
+ .product-model.plate-model .plate-support{left:70px!important}
+}
+
 </style>
 </head>
 <body>
@@ -451,7 +501,7 @@
     <div class="product-model card-model" id="productModel" style="--model-color:#123246">
      <div class="model-face front face-frente"><span class="model-brand">VÉRTICE NFC</span><span class="model-label" id="modelTextFront">SEU NEGÓCIO</span><span class="front-identity" id="modelCustomerData">SEU LINK · SEU CONTATO</span></div>
      <div class="model-face back face-verso"><div class="back-tools"><span class="model-qr" aria-label="QR Code ilustrativo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="nfc-mark" aria-label="Símbolo NFC"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="12" height="19" rx="2"/><path d="M7 10h4M8 23h2M19 11c3 3 3 7 0 10M22 8c5 5 5 11 0 16M25 5c7 7 7 15 0 22"/></svg></span></div></div>
-     <div class="plate-base" aria-hidden="true"></div><div class="plate-rear-foot" aria-hidden="true"></div><div class="plate-edge left" aria-hidden="true"></div><div class="plate-edge right" aria-hidden="true"></div><div class="plate-top-edge" aria-hidden="true"></div>
+     <div class="plate-base" aria-hidden="true"></div><div class="plate-rear-foot" aria-hidden="true"></div><div class="plate-support" aria-hidden="true"></div><div class="plate-edge left" aria-hidden="true"></div><div class="plate-edge right" aria-hidden="true"></div><div class="plate-top-edge" aria-hidden="true"></div>
     </div>
    </div>
    <div class="drag-hint">↔ Arraste com o mouse ou dedo para girar em 360°</div>

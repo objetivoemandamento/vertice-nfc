@@ -45,6 +45,8 @@
 .model-qr{display:grid;grid-template-columns:repeat(9,5px);grid-auto-rows:5px;gap:2px;flex:none;padding:7px;border:1px solid #eaffff;background:#fff;box-shadow:0 0 12px rgb(103 232 249 / .13)}
 .model-qr i{display:block;width:5px;height:5px;background:#071018}
 .model-qr i:nth-child(3n),.model-qr i:nth-child(7n){background:#fff}
+.model-qr i:nth-child(-n+3),.model-qr i:nth-child(n+7):nth-child(-n+9),.model-qr i:nth-child(n+19):nth-child(-n+21),.model-qr i:nth-child(n+61):nth-child(-n+63),.model-qr i:nth-child(n+25):nth-child(-n+27){background:#071018}
+.model-qr i:nth-child(2),.model-qr i:nth-child(8),.model-qr i:nth-child(11),.model-qr i:nth-child(13),.model-qr i:nth-child(17),.model-qr i:nth-child(20),.model-qr i:nth-child(22),.model-qr i:nth-child(26),.model-qr i:nth-child(28),.model-qr i:nth-child(56),.model-qr i:nth-child(62),.model-qr i:nth-child(65),.model-qr i:nth-child(71){background:#fff}
 .nfc-mark{display:flex;flex:none;align-items:center;justify-content:center;color:#67e8f9;filter:drop-shadow(0 0 5px rgb(103 232 249 / .35))}
 .nfc-mark svg{display:block;width:38px;height:38px}
 .nfc-mark svg path{stroke-dasharray:42;animation:nfc-wave 2.4s ease-in-out infinite}
@@ -59,10 +61,10 @@
 .product-model.plate-model .face-verso .model-qr i{width:5px;height:5px}
 .product-model.plate-model .face-verso .nfc-mark svg{width:32px;height:32px}
 .plate-base,.plate-rear-foot,.plate-support,.plate-edge,.plate-top-edge{position:absolute;display:none;pointer-events:none}
-.product-model.plate-model .plate-base{display:block;left:2px;top:199px;width:150px;height:82px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(1px);z-index:3;background:linear-gradient(180deg,rgb(255 255 255 / .46),rgb(223 250 255 / .14) 24%,rgb(156 239 255 / .06) 58%,rgb(247 255 255 / .34));border:1px solid rgb(231 255 255 / .82);border-top:2px solid rgb(255 255 255 / .95);box-shadow:inset 0 0 14px rgb(216 251 255 / .15),0 0 3px rgb(255 255 255 / .55);backface-visibility:visible}
+.product-model.plate-model .plate-base{display:block;left:2px;top:199px;width:150px;height:88px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(1.2px);z-index:3;background:linear-gradient(180deg,rgb(255 255 255 / .46),rgb(223 250 255 / .14) 24%,rgb(156 239 255 / .06) 58%,rgb(247 255 255 / .34));border:1px solid rgb(231 255 255 / .82);border-top:2px solid rgb(255 255 255 / .95);box-shadow:inset 0 0 14px rgb(216 251 255 / .15),0 0 3px rgb(255 255 255 / .55);backface-visibility:visible}
 .product-model.plate-model .plate-base:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:rgb(255 255 255 / .8)}
-.product-model.plate-model .plate-rear-foot{display:block;left:2px;top:199px;width:150px;height:82px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(-1.5px);z-index:1;background:linear-gradient(180deg,rgb(255 255 255 / .18),rgb(223 250 255 / .04) 45%,rgb(255 255 255 / .22));border:1px solid rgb(223 255 255 / .56);backface-visibility:visible}
-.product-model.plate-model .plate-support{display:block;top:100px;width:82px;height:100px;transform-origin:0 0;transform:rotateY(90deg);clip-path:polygon(0 0,0 100%,100% 100%);background:linear-gradient(90deg,rgb(255 255 255 / .28),rgb(223 250 255 / .12) 48%,rgb(255 255 255 / .48));border:1px solid rgb(230 255 255 / .58);backface-visibility:visible}
+.product-model.plate-model .plate-rear-foot{display:block;left:2px;top:199px;width:150px;height:88px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(-1.8px);z-index:1;background:linear-gradient(180deg,rgb(255 255 255 / .18),rgb(223 250 255 / .04) 45%,rgb(255 255 255 / .22));border:1px solid rgb(223 255 255 / .56);backface-visibility:visible}
+.product-model.plate-model .plate-support{display:block;top:100px;width:88px;height:100px;transform-origin:0 0;transform:rotateY(90deg);clip-path:polygon(0 0,0 100%,100% 100%);background:linear-gradient(90deg,rgb(255 255 255 / .28),rgb(223 250 255 / .12) 48%,rgb(255 255 255 / .48));border:1px solid rgb(230 255 255 / .58);backface-visibility:visible}
 .product-model.plate-model .plate-support.support-left{left:2px}
 .product-model.plate-model .plate-support.support-right{left:148px}
 .product-model.plate-model .plate-edge{display:block;top:1px;width:2px;height:200px;background:linear-gradient(180deg,#fff,rgb(197 250 255 / .38) 22%,rgb(255 255 255 / .65) 76%,#e9ffff);box-shadow:0 0 3px rgb(223 255 255 / .5)}
@@ -76,6 +78,9 @@
 .custom-controls label{font-size:11px}
 .custom-controls input,.custom-controls select{width:100%;min-width:0;max-width:100%;font-size:12px}
 .stage-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.stage-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.stage-actions .btn{white-space:normal}
+@media(max-width:520px){.stage-actions{width:100%}.stage-actions .btn{flex:1 1 140px}}
 .stage-price{font-size:21px;font-weight:850}
 .stage-price small{color:var(--muted);font-size:11px;font-weight:500}
 .stage-note{color:var(--muted);font-size:11px}
@@ -129,7 +134,7 @@
     <div class="field"><label for="modelFinish">Acabamento</label><select id="modelFinish"><option value="Fosco">Fosco</option><option value="Brilhante">Brilhante</option><option value="Metalizado">Metalizado</option></select></div>
     <div class="field design-meeting"><label for="designMeeting">Personalizar design</label><select id="designMeeting"><option value="Design padrão">Design padrão</option><option value="Design personalizado por reunião">Design personalizado por reunião</option></select></div>
    </div>
-   <div class="stage-bottom"><div><div class="stage-price" id="modelPrice">R$ 35,00 <small>valor inicial</small></div><div class="stage-note">Personalização e preço final sujeitos à confirmação.</div></div><button class="btn primary" id="modelOrder" type="button">Personalizar no WhatsApp ↗</button></div>
+   <div class="stage-bottom"><div><div class="stage-price" id="modelPrice">R$ 35,00 <small>valor inicial</small></div><div class="stage-note">Personalização e preço final sujeitos à confirmação.</div></div><div class="stage-actions"><button class="btn secondary" id="modelAddToCart" type="button">Adicionar ao carrinho</button><button class="btn primary" id="modelOrder" type="button">Personalizar no WhatsApp ↗</button></div></div>
   </div>
  </div>
 </section>
@@ -169,6 +174,13 @@ sites:[
 {id:"site-maintenance",name:"Manutenção de site",price:30,period:"/mês",desc:"Mensalidade do serviço de site conforme escopo contratado.",keys:"manutenção manutencao suporte atualizações atualizacoes mensal hospedagem"}
 ]};
 const allItems=Object.values(catalog).flat();
+const showcaseCartItems=[
+ {id:"showcase-card-normal",name:"Cartão NFC Normal",price:35,desc:"Modelo de cartão NFC normal selecionado na vitrine.",keys:"vitrine cartão nfc normal"},
+ {id:"showcase-card-personalizado",name:"Cartão NFC Personalizado",price:50,desc:"Modelo de cartão NFC personalizado selecionado na vitrine.",keys:"vitrine cartão nfc personalizado"},
+ {id:"showcase-plate-normal",name:"Placa NFC Normal",price:35,desc:"Modelo de placa NFC normal selecionado na vitrine.",keys:"vitrine placa nfc normal"},
+ {id:"showcase-plate-personalizado",name:"Placa NFC Personalizada",price:50,desc:"Modelo de placa NFC personalizada selecionado na vitrine.",keys:"vitrine placa nfc personalizado"}
+];
+allItems.push(...showcaseCartItems);
 const money=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
 const CART_STORAGE_KEY="vertice-nfc-cart-v1";
@@ -216,7 +228,14 @@ function applySearch(){
   if(match)switchTab(Object.keys(catalog).find(key=>catalog[key].some(item=>item.id===match.id)));
  }
 }
-function addToCart(id){const item=findItem(id);if(!item)return;cart.set(id,(cart.get(id)||0)+1);renderCart();switchTab("carrinho");}
+function addToCart(product){
+ const id=typeof product==="string"?product:product?.id;
+ const item=typeof product==="object"&&product!==null?product:findItem(id);
+ if(!item||!id||!Number.isFinite(Number(item.price))||Number(item.price)<0)return false;
+ if(!findItem(id)&&typeof product==="object"&&product!==null)allItems.push(item);
+ cart.set(id,Math.min(99,(cart.get(id)||0)+1));
+ renderCart();switchTab("carrinho");return true;
+}
 function removeFromCart(id){cart.delete(id);renderCart();}
 function subtotal(){return [...cart].reduce((sum,[id,qty])=>sum+findItem(id).price*qty,0);}
 function discount(total){const rule=couponRules[appliedCoupon];if(!rule)return 0;return rule.type==="percent"?total*Math.min(rule.value,100)/100:Math.min(total,Math.max(0,rule.value));}
@@ -271,7 +290,7 @@ if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(prefers
 }
 
 /* Vitrine 3D por CSS: apenas transforma um elemento, sem canvas/WebGL. */
-const showcase={type:"card",custom:"normal",price:35,name:"Cartão NFC Normal",rx:-12,ry:-24,drag:false,x:0,y:0};
+const showcase={type:"card",custom:"normal",price:35,name:"Cartão NFC Normal",rx:-12,ry:-24,drag:false,moved:false,x:0,y:0,pointerId:null};
 const modelEl=document.getElementById("productModel"), viewEl=document.getElementById("productView");
 function updateShowcase(){
  const custom=showcase.custom==="personalizado";
@@ -289,10 +308,36 @@ function updateShowcase(){
 }
 document.querySelectorAll("[data-model]").forEach(b=>b.addEventListener("click",()=>{showcase.type=b.dataset.model;showcase.custom=b.dataset.custom;updateShowcase();}));
 ["customText","modelColor","modelFinish"].forEach(id=>document.getElementById(id).addEventListener("input",updateShowcase));
-viewEl.addEventListener("pointerdown",e=>{showcase.drag=true;showcase.x=e.clientX;showcase.y=e.clientY;viewEl.setPointerCapture(e.pointerId);});
-viewEl.addEventListener("pointermove",e=>{if(!showcase.drag)return;const dx=e.clientX-showcase.x,dy=e.clientY-showcase.y;showcase.x=e.clientX;showcase.y=e.clientY;showcase.ry+=dx*.7;showcase.rx=Math.max(-180,Math.min(180,showcase.rx-dy*.7));modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";});
-function stopModelDrag(){showcase.drag=false;}
-viewEl.addEventListener("pointerup",stopModelDrag);viewEl.addEventListener("pointercancel",stopModelDrag);viewEl.addEventListener("lostpointercapture",stopModelDrag);
+viewEl.addEventListener("pointerdown",e=>{
+ if(e.button!==undefined&&e.button!==0)return;
+ showcase.drag=true;showcase.moved=false;showcase.pointerId=e.pointerId;showcase.x=e.clientX;showcase.y=e.clientY;
+ try{viewEl.setPointerCapture(e.pointerId);}catch(error){}
+});
+viewEl.addEventListener("pointermove",e=>{
+ if(!showcase.drag||e.pointerId!==showcase.pointerId)return;
+ const dx=e.clientX-showcase.x,dy=e.clientY-showcase.y;
+ if(Math.abs(e.clientX-(showcase.startX??e.clientX))>5||Math.abs(e.clientY-(showcase.startY??e.clientY))>5)showcase.moved=true;
+ showcase.startX=showcase.startX??e.clientX;showcase.startY=showcase.startY??e.clientY;
+ if(Math.abs(dx)>0||Math.abs(dy)>0)showcase.moved=true;
+ showcase.x=e.clientX;showcase.y=e.clientY;showcase.ry+=dx*.7;
+ showcase.rx=Math.max(-180,Math.min(180,showcase.rx-dy*.7));
+ modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";
+});
+function stopModelDrag(e){
+ if(!showcase.drag)return;
+ const wasTap=!showcase.moved;
+ showcase.drag=false;showcase.pointerId=null;showcase.startX=undefined;showcase.startY=undefined;
+ if(wasTap&&showcase.type==="card"){
+  showcase.ry+=180;
+  modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";
+ }
+}
+viewEl.addEventListener("pointerup",stopModelDrag);viewEl.addEventListener("pointercancel",e=>{showcase.drag=false;showcase.pointerId=null;showcase.startX=undefined;showcase.startY=undefined;});viewEl.addEventListener("lostpointercapture",()=>{showcase.drag=false;showcase.pointerId=null;showcase.startX=undefined;showcase.startY=undefined;});
+document.getElementById("modelAddToCart").addEventListener("click",()=>{
+ const custom=showcase.custom==="personalizado";
+ const id="showcase-"+showcase.type+"-"+(custom?"personalizado":"normal");
+ const item=findItem(id);if(item)addToCart(item);
+});
 document.getElementById("modelOrder").addEventListener("click",()=>{const text=document.getElementById("customText").value.trim()||"Não definido";const color=document.getElementById("modelColor").selectedOptions[0].text;const finish=document.getElementById("modelFinish").value;const design=document.getElementById("designMeeting").value;wa("Olá! Quero solicitar orçamento para "+showcase.name+".\nTexto: "+text+"\nCor: "+color+"\nAcabamento: "+finish+"\nDesign: "+design+"\nValor inicial exibido: "+money(showcase.price)+"\nPor favor, confirmem personalização, disponibilidade, prazo e preço final.");});
 updateShowcase();
 

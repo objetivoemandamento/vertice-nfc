@@ -54,6 +54,18 @@ body::after{
 /* Ao trocar de aba, posiciona o conteúdo abaixo da navegação fixa */
 .section{scroll-margin-top:105px}
 @media(max-width:640px){.section{scroll-margin-top:155px}}
+
+/* Fundos exclusivos por aba, sem imagem fixa: acompanham a rolagem do conteúdo */
+.section{position:relative;isolation:isolate;overflow:hidden;border-radius:22px;padding-left:18px;padding-right:18px}
+.section::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.95}
+.section>*{position:relative}
+.section[data-section="produtos"]::before{background:radial-gradient(ellipse at 12% 10%,#00d9ff20,transparent 42%),radial-gradient(ellipse at 88% 65%,#245bff20,transparent 38%),repeating-linear-gradient(135deg,transparent 0 42px,#31dfff08 43px 44px,transparent 45px 84px),linear-gradient(145deg,#071421 0%,#090b16 55%,#07101c 100%)}
+.section[data-section="combos"]::before{background:radial-gradient(ellipse at 0% 25%,#6d28d933,transparent 43%),radial-gradient(ellipse at 100% 75%,#087bff2e,transparent 42%),repeating-linear-gradient(35deg,transparent 0 58px,#8b5cf608 59px 60px,transparent 61px 116px),linear-gradient(145deg,#100b22,#080d1b 60%,#071426)}
+.section[data-section="servicos"]::before{background:radial-gradient(ellipse at 18% 15%,#00e5c520,transparent 40%),radial-gradient(ellipse at 80% 70%,#0ea5e922,transparent 44%),repeating-radial-gradient(ellipse at 50% 100%,transparent 0 22px,#26d9ff0b 23px 24px,transparent 25px 48px),linear-gradient(150deg,#061b20,#07111b 62%,#071523)}
+.section[data-section="sites"]::before{background:radial-gradient(ellipse at 18% 20%,#a78bfa26,transparent 42%),radial-gradient(ellipse at 85% 75%,#3b82f626,transparent 43%),linear-gradient(125deg,transparent 0 42%,#a78bfa0b 42.2% 42.5%,transparent 42.7% 62%,#67e8f90b 62.2% 62.5%,transparent 62.7%),linear-gradient(145deg,#121026,#080e1d 65%,#091421)}
+.section[data-section="frete"]::before{background:radial-gradient(ellipse at 12% 70%,#06b6d429,transparent 42%),radial-gradient(ellipse at 90% 15%,#f59e0b18,transparent 36%),repeating-linear-gradient(155deg,transparent 0 64px,#67e8f90b 65px 66px,transparent 67px 128px),linear-gradient(145deg,#061524,#09101b 55%,#11101b)}
+@media(max-width:640px){.section{padding-left:10px;padding-right:10px;border-radius:16px}}
+
 </style>
 </head>
 <body>

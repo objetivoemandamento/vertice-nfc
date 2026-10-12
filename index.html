@@ -50,6 +50,10 @@ body::after{
 .icon{background:rgba(0,217,245,.08);border-color:rgba(0,217,245,.2);color:#39eaff}
 .pill{border-color:rgba(0,217,245,.28);color:#7beeff;background:rgba(0,217,245,.06)}
 @media(prefers-reduced-transparency:reduce){.top{background:#030811}.card,.shipping,.hero .visual{background:#08121f}}
+
+/* Ao trocar de aba, posiciona o conteúdo abaixo da navegação fixa */
+.section{scroll-margin-top:105px}
+@media(max-width:640px){.section{scroll-margin-top:155px}}
 </style>
 </head>
 <body>
@@ -90,7 +94,7 @@ let cart=[];
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function render(){for(const [section,items] of Object.entries(catalog)){document.querySelector('[data-grid="'+section+'"]').innerHTML=items.map(p=>'<article class="card" data-card data-search="'+escapeHtml((p.name+" "+p.desc+" "+p.keys).toLocaleLowerCase("pt-BR"))+'"><div class="icon">'+p.icon+'</div><h3>'+escapeHtml(p.name)+'</h3><p>'+escapeHtml(p.desc)+'</p><div class="price">'+money(p.price)+' <small>'+(p.period?escapeHtml(p.period):"")+'</small></div><div class="card-actions"><button class="btn secondary" data-add="'+p.id+'">Adicionar</button><button class="btn primary" data-buy="'+p.id+'">Pedir</button></div></article>').join("");}applySearch();renderCart();}
 function showToast(s){const t=document.getElementById("toast");t.textContent=s;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2400);}
-function switchTab(tab){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.dataset.section===tab));applySearch();}
+function switchTab(tab){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.dataset.section===tab));applySearch();const target=document.querySelector('[data-section="'+tab+'"]');if(target)target.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});}
 function applySearch(){const q=document.getElementById("search").value.trim().toLocaleLowerCase("pt-BR");document.querySelectorAll("[data-section]").forEach(s=>{if(s.dataset.section==="frete")return;let n=0;s.querySelectorAll("[data-card]").forEach(c=>{let ok=!q||c.dataset.search.includes(q);c.style.display=ok?"flex":"none";if(ok)n++;});s.querySelector("[data-empty]").style.display=n?"none":"block";});if(q){const target=["produtos","combos","servicos"].find(k=>[...document.querySelectorAll('[data-section="'+k+'"] [data-card]')].some(c=>c.style.display!=="none"));if(target)switchTab(target);}}
 function add(id){const p=find(id);if(!p)return;let line=cart.find(x=>x.id===id);if(line)line.qty++;else cart.push({id,qty:1});renderCart();showToast(p.name+" adicionado ao carrinho.");}
 function renderCart(){document.getElementById("count").textContent=cart.reduce((a,x)=>a+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>{let p=find(x.id);return '<div class="cartline"><div><strong>'+escapeHtml(p.name)+'</strong><small>'+x.qty+' × '+money(p.price)+(p.period?" "+p.period:"")+'</small></div><div><strong>'+money(p.price*x.qty)+'</strong><br><button class="close" data-remove="'+p.id+'">Remover</button></div></div>';}).join(""):'<p class="desc">Seu carrinho está vazio. Adicione um produto para começar.</p>';document.getElementById("total").textContent=money(cart.reduce((a,x)=>a+find(x.id).price*x.qty,0));}

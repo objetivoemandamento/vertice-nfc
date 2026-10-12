@@ -13,458 +13,76 @@
 
 
 
-/* Correção visual focada no verso do cartão: QR + NFC sempre presentes na face traseira */
-.card-model{position:relative;transform-style:preserve-3d!important}
-.card-model>.face-frente,.card-model>.face-verso{position:absolute!important;inset:0!important;display:flex!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;overflow:hidden!important}
-.card-model>.face-frente{transform:rotateY(0deg) translateZ(1px)!important}
-.card-model>.face-verso{transform:rotateY(180deg) translateZ(1px)!important;visibility:visible!important;opacity:1!important;justify-content:center!important;align-items:center!important}
-.card-model>.face-verso>.back-tools{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:22px!important;width:100%!important;height:100%!important}
-.card-model>.face-verso .model-qr{display:grid!important;grid-template-columns:repeat(9,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:7px!important;background:#fff!important;border:1px solid #dffaff!important;flex:none!important}
-.card-model>.face-verso .model-qr i{display:block!important;width:5px!important;height:5px!important;background:#071018!important}
-.card-model>.face-verso .model-qr i:nth-child(3n),.card-model>.face-verso .model-qr i:nth-child(7n){background:#fff!important}
-.card-model>.face-verso .nfc-mark{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;color:#67e8f9!important;flex:none!important}
-.card-model>.face-verso .nfc-mark svg{display:block!important;width:36px!important;height:36px!important}
 
-/* Renderização robusta: faces explícitas do cartão e placa em perspectiva estilizada */
-.face-frente{transform:rotateY(0deg) translateZ(1px);backface-visibility:hidden}
-.face-verso{transform:rotateY(180deg) translateZ(1px);backface-visibility:hidden}
-.product-model.card-model{width:220px;height:138px;transform-style:preserve-3d}
-.card-model .face-frente{border-radius:10px;background:linear-gradient(135deg,var(--model-color,#123246),#071018 82%);border:1px solid #8ff5ffb0}
-.card-model .face-verso{border-radius:10px;background:linear-gradient(135deg,#102333,#070b11);border:1px solid #8ff5ffb0}
-.card-model .face-verso .back-tools{display:flex;align-items:center;justify-content:center;gap:24px;width:100%;height:100%}.card-model .face-verso .model-qr{display:grid;grid-template-columns:repeat(9,5px);gap:2px;padding:7px;background:#fff;border:1px solid #eaffff;box-shadow:0 0 10px #67e8f944}.card-model .face-verso .model-qr i{width:5px;height:5px;background:#071018}.card-model .face-verso .model-qr i:nth-child(3n),.card-model .face-verso .model-qr i:nth-child(7n){background:#fff}.card-model .face-verso .nfc-mark{color:#67e8f9}.card-model .face-verso .nfc-mark svg{width:34px;height:34px}
-.card-model .face-verso .model-qr{grid-template-columns:repeat(5,7px);gap:2px;padding:6px}
-.card-model .face-verso .model-qr i{width:7px;height:7px}
-.card-model .face-verso .nfc-mark svg{width:34px;height:34px}
-.product-model.plate-model{width:190px;height:255px;transform-style:flat;filter:drop-shadow(0 18px 16px #0008)}
-.plate-model .face-frente,.plate-model .face-verso{position:absolute;left:10px;top:0;width:150px;height:190px;border-radius:1px;overflow:hidden;backface-visibility:hidden;transform:none;box-shadow:inset 0 0 0 1px #ffffff55,0 0 2px #ffffffbb;background:linear-gradient(105deg,#ffffff45,#dffaff08 45%,#ffffff2b);border:1px solid #eaffffdf}
-.plate-model .face-frente{transform:perspective(700px) rotateY(-5deg) skewY(-2deg);z-index:2}
-.plate-model .face-verso{transform:perspective(700px) rotateY(175deg) skewY(-2deg);z-index:1}
-.plate-model .plate-base,.plate-model .plate-rear-foot{display:none}
-.plate-model .plate-base{display:block;position:absolute;left:10px;top:185px;width:150px;height:57px;transform:skewX(-23deg) rotate(7deg);transform-origin:top left;background:linear-gradient(180deg,#ffffff6b,#c7f7ff18 45%,#ffffff4a);border:1px solid #eaffffdf;box-shadow:inset 0 0 10px #ffffff30,0 7px 9px #0006;z-index:3}
-.plate-model .plate-rear-foot{display:block;position:absolute;left:28px;top:185px;width:145px;height:57px;transform:skewX(23deg) rotate(-7deg);transform-origin:top left;background:linear-gradient(180deg,#ffffff35,#dffaff0c 55%,#ffffff38);border:1px solid #eaffffb8;z-index:1}
-.plate-model .plate-edge,.plate-model .plate-top-edge{display:none}
-.plate-model .face-verso .back-tools{height:100%;display:flex;align-items:center;justify-content:center;gap:18px}
-.plate-model .face-verso .model-qr{grid-template-columns:repeat(5,7px);gap:2px;padding:6px}
-.plate-model .face-verso .model-qr i{width:7px;height:7px}
-.plate-model .face-verso .nfc-mark svg{width:32px;height:32px}
-
-/* Vitrine 3D: CSS puro, sem motor WebGL ou dependências externas */
-.vitrine{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(0,2fr);gap:16px;align-items:stretch}
-.vitrine-list{border:1px solid #67e8f92b;border-radius:18px;background:#0b121ddd;backdrop-filter:blur(12px);padding:16px;min-width:0}.stage{min-width:0}
+/* VÉRTICE NFC — sistema visual consolidado da vitrine 3D */
+.vitrine{display:grid;grid-template-columns:minmax(190px,.72fr) minmax(0,1.8fr);gap:22px;align-items:start}
+.vitrine-list{min-width:0;padding:16px;border:1px solid #67e8f92b;border-radius:16px;background:#0b121dcc;backdrop-filter:blur(10px)}
 .vitrine-list h3{margin:0 0 12px;font-size:14px}
-.vitrine-choice{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:12px;margin:6px 0;border:1px solid var(--line);border-radius:12px;background:#111a27aa;color:var(--text);cursor:pointer}
-.vitrine-choice[aria-pressed="true"]{border-color:var(--cyan);box-shadow:0 0 0 1px #67e8f933,0 0 22px #00d9ff13;background:#112735}
-.choice-icon{display:grid;place-items:center;width:38px;height:30px;border:1px solid #67e8f966;border-radius:7px;color:var(--cyan);font-size:10px;font-weight:900;flex:none}
-.vitrine-choice strong{display:block;font-size:12px}.vitrine-choice small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
-.stage{display:flex;flex-direction:column;gap:14px;border:0;background:transparent;backdrop-filter:none;box-shadow:none;padding:0}
-.stage-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.stage-head h2{font-size:clamp(22px,4vw,32px);margin:4px 0;line-height:1.2}.stage-head p{margin:0;color:var(--muted);font-size:12px}
-.stage-pill{border:1px solid #67e8f944;color:var(--cyan);padding:5px 8px;border-radius:99px;font-size:10px;white-space:nowrap}
-.product-view{display:grid;place-items:center;min-height:300px;overflow:visible;border:0!important;outline:0!important;border-radius:0;background:transparent!important;box-shadow:none!important;perspective:1000px;touch-action:none;user-select:none;cursor:grab;position:relative}.product-view:before{content:none!important}.stage .product-view,.stage .product-view *{outline-color:transparent}
+.choice-list{display:grid;gap:7px}
+.vitrine-choice{display:flex;align-items:center;gap:10px;width:100%;min-width:0;margin:0;padding:11px;text-align:left;border:1px solid var(--line);border-radius:11px;background:#111a27a8;color:var(--text);cursor:pointer}
+.vitrine-choice[aria-pressed="true"]{border-color:var(--cyan);background:#112735;box-shadow:0 0 0 1px #67e8f922}
+.choice-icon{display:grid;place-items:center;flex:0 0 36px;width:36px;height:30px;border:1px solid #67e8f966;border-radius:7px;color:var(--cyan);font-size:10px;font-weight:900}
+.vitrine-choice strong,.vitrine-choice small{display:block;overflow-wrap:anywhere}
+.vitrine-choice strong{font-size:12px}
+.vitrine-choice small{margin-top:2px;color:var(--muted);font-size:10px}
+.stage{display:flex;flex-direction:column;gap:14px;min-width:0;padding:0;border:0;background:transparent;box-shadow:none}
+.stage-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;min-width:0;background:transparent}
+.stage-head h2{margin:4px 0;font-size:clamp(22px,4vw,32px);line-height:1.2}
+.stage-head p{margin:0;color:var(--muted);font-size:12px}
+.stage-pill{flex:0 0 auto;padding:5px 8px;border:1px solid #67e8f944;border-radius:99px;color:var(--cyan);font-size:10px;white-space:nowrap}
+.product-view{position:relative;display:grid;place-items:center;width:100%;min-width:0;min-height:340px;padding:20px 10px 24px;overflow:visible;perspective:1200px;perspective-origin:50% 45%;background:transparent;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;cursor:grab}
 .product-view:active{cursor:grabbing}
-.product-model{position:relative;transform-style:preserve-3d;will-change:transform;transition:transform .06s linear;filter:drop-shadow(0 24px 24px #0009)}
-.product-model.card-model{width:220px;height:138px}.product-model.plate-model{width:154px;height:254px;filter:drop-shadow(0 20px 18px #0007)}
-.model-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid #b9faff88;border-radius:13px;backface-visibility:hidden;background:linear-gradient(145deg,var(--model-color,#122a3a),#070b12 80%);box-shadow:inset 0 0 24px #67e8f91c,0 0 22px #00d9ff13;color:#f4fbff;overflow:hidden}
-.plate-model .model-face{top:0;left:2px;right:auto;bottom:auto;width:150px;height:190px;inset:auto;border-radius:1px;border:1px solid #e6ffffd9;background:linear-gradient(105deg,#ffffff42 0%,#eaffff12 16%,#c9f8ff05 48%,#ffffff24 78%,#eaffff38 100%);box-shadow:inset 0 0 0 1px #ffffff55,inset 0 0 18px #d9fbff10,0 0 2px #f5ffffcc;backface-visibility:hidden;color:#f4fbff;overflow:hidden}.plate-model .model-face.front{transform:translateZ(1.5px)}.plate-model .model-face.back{transform:rotateY(180deg) translateZ(1.5px);background:linear-gradient(105deg,#ffffff35 0%,#dffaff0b 22%,#b9f8ff08 58%,#ffffff2b 100%)}.plate-model .model-face.back .back-tools{display:flex;align-items:center;justify-content:center;gap:20px;padding:12px;width:100%;height:100%;background:transparent}.plate-model .model-face.back .model-qr{display:grid;grid-template-columns:repeat(5,7px);gap:2px;padding:6px;border:1px solid #eaffff;background:#fff;box-shadow:0 0 8px #dfffff44}.plate-model .model-face.back .model-qr i{width:7px;height:7px;background:#071018}.plate-model .model-face.back .model-qr i:nth-child(2n),.plate-model .model-face.back .model-qr i:nth-child(5n){background:#fff}.plate-model .model-face.back .nfc-mark svg{width:34px;height:34px}.plate-model .model-face.back .nfc-mark{color:#e8ffff;filter:drop-shadow(0 0 4px #67e8f955)}.plate-model .plate-base{position:absolute;left:2px;top:189px;width:150px;height:82px;transform-origin:top center;transform:rotateX(-90deg) translateZ(1px);background:linear-gradient(180deg,#ffffff5c 0%,#dffaff12 24%,#9cefff08 58%,#f7ffff55 100%);border:1px solid #e7ffffd9;border-top:2px solid #ffffffee;box-shadow:inset 0 0 14px #d8fbff20,0 0 2px #ffffffc9;backface-visibility:visible}.plate-model .plate-base:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:#ffffffc9}.plate-model .plate-rear-foot{position:absolute;left:2px;top:189px;width:150px;height:82px;transform-origin:top center;transform:rotateX(-90deg) translateZ(-1px);background:linear-gradient(180deg,#ffffff18,#dffaff05 35%,#ffffff28);border:1px solid #dfffff8f;backface-visibility:visible;pointer-events:none}.plate-model .plate-edge{position:absolute;top:1px;width:2px;height:190px;background:linear-gradient(180deg,#ffffffef,#c5faff48 22%,#ffffffa8 76%,#e9ffffe8);box-shadow:0 0 3px #dfffff99;pointer-events:none}.plate-model .plate-edge.left{left:1px}.plate-model .plate-edge.right{left:151px;width:1px;background:#dffaffad}.plate-model .plate-top-edge{position:absolute;left:2px;top:0;width:150px;height:2px;background:#ffffffdf;box-shadow:0 0 3px #ffffff99;pointer-events:none}.model-face:before{content:none}.nfc-mark{display:flex;align-items:center;justify-content:center;gap:4px;color:#67e8f9}.nfc-mark svg{width:24px;height:24px;filter:drop-shadow(0 0 5px #00eaff4d)}.front-identity{font-size:9px;letter-spacing:.12em;color:#b5d7e7}.model-face.back{gap:7px}.model-face.front{gap:10px}.model-face.front .model-brand{font-size:9px}.model-face.front .model-label{font-size:17px}.model-face.front .front-identity{font-size:8px;letter-spacing:.08em}.back-tools{display:flex;align-items:center;gap:12px}.model-qr{box-shadow:0 0 12px #fff2}.model-note{font-size:8px;letter-spacing:.13em;color:#9bb8cb}
-.model-face.back{transform:rotateY(180deg) translateZ(1.5px);background:linear-gradient(105deg,#ffffff42 0%,#eaffff12 16%,#c9f8ff05 48%,#ffffff24 78%,#eaffff38 100%);color:#f4fbff}.plate-model .model-face.back{display:flex;opacity:1;visibility:visible}.plate-model .model-face.back .back-tools{display:flex;align-items:center;justify-content:center;gap:16px}.plate-model .model-face.back .model-qr{display:grid;grid-template-columns:repeat(5,5px);gap:2px;padding:5px;border:1px solid #eaffff;background:#fff}.plate-model .model-face.back .nfc-mark{color:#67e8f9}
-.model-brand{font-size:10px;letter-spacing:.22em;color:var(--cyan);font-weight:900}.model-label{font-size:18px;font-weight:850;max-width:85%;overflow-wrap:anywhere;text-align:center;line-height:1.15}.model-sub{font-size:9px;letter-spacing:.15em;color:#a9c3d4}.model-chip{width:30px;height:23px;border:1px solid #d7f8ff;border-radius:5px;background:repeating-linear-gradient(90deg,#c9d6ce 0 2px,#667f7d 2px 4px);opacity:.9}.model-qr{display:grid;grid-template-columns:repeat(5,5px);gap:2px;padding:5px;border:1px solid #dffaff;background:#fff}.model-qr i{width:5px;height:5px;background:#071018}.model-qr i:nth-child(2n),.model-qr i:nth-child(5n){background:#fff}
-.drag-hint{font-size:11px;color:var(--muted);text-align:center;margin-top:-6px}
-.custom-controls{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}.custom-controls .field{margin:0}.custom-controls .design-meeting{grid-column:1/-1}.custom-controls label{font-size:11px}.custom-controls input,.custom-controls select{font-size:12px}.stage-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.stage-price{font-size:21px;font-weight:850}.stage-price small{font-size:11px;color:var(--muted);font-weight:500}.stage-note{color:var(--muted);font-size:11px}
-@media(max-width:680px){.vitrine{grid-template-columns:1fr}.vitrine-list{padding:12px}.vitrine-list .choice-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.vitrine-choice{margin:0;padding:9px;gap:7px}.choice-icon{width:30px;height:28px}.vitrine-choice strong{font-size:11px}.product-view{min-height:265px}.custom-controls{grid-template-columns:1fr 1fr}.custom-controls .field:first-child{grid-column:1/-1}}
-@media(prefers-reduced-motion:reduce){.product-model{transition:none}}
-
-
-/* Final overrides after audit: consistent two-sided card and rotatable counter display */
-.product-model.card-model,.product-model.plate-model{transform-style:preserve-3d!important}
-.product-model>.face-frente,.product-model>.face-verso{-webkit-backface-visibility:hidden!important;backface-visibility:hidden!important}
-.product-model.card-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important}
-.product-model.card-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important}
-.product-model.card-model>.face-verso .model-qr{grid-template-columns:repeat(9,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:7px!important}
-.product-model.card-model>.face-verso .model-qr i{width:5px!important;height:5px!important}
-.product-model.plate-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important}
-.product-model.plate-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important;display:flex!important;visibility:visible!important;opacity:1!important}
-.product-model.plate-model .plate-base,.product-model.plate-model .plate-rear-foot{transform-style:preserve-3d}
-.product-model.plate-model>.face-verso .back-tools{display:flex!important;align-items:center!important;justify-content:center!important;width:100%;height:100%;gap:18px!important}
-.product-model.plate-model>.face-verso .model-qr{grid-template-columns:repeat(5,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:6px!important}
-.product-model.plate-model>.face-verso .model-qr i{width:5px!important;height:5px!important}
-
-
-/* VÉRTICE NFC — geometria final da vitrine; sem painel ou moldura no palco */
-.stage,.stage-head,.product-view{background:transparent!important;border:0!important;outline:0!important;box-shadow:none!important}
-.product-view{display:grid;place-items:center;min-height:320px;overflow:visible;perspective:1100px;isolation:isolate}
-.product-model{position:relative;transform-style:preserve-3d!important;will-change:transform;transition:transform .06s linear;filter:drop-shadow(0 22px 20px #0009)}
+.product-model{position:relative;flex:none;transform-origin:50% 50%;transform-style:preserve-3d;backface-visibility:visible;will-change:transform;filter:drop-shadow(0 22px 19px rgb(0 0 0 / .42));transition:transform .08s linear}
 .product-model.card-model{width:220px;height:138px}
-.product-model.card-model>.face-frente,.product-model.card-model>.face-verso{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border-radius:10px!important;overflow:hidden!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important}
-.product-model.card-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important}
-.product-model.card-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important;display:flex!important;visibility:visible!important;opacity:1!important}
-.product-model.card-model>.face-verso .back-tools{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:20px!important;width:100%!important;height:100%!important}
-.product-model.card-model>.face-verso .model-qr{display:grid!important;grid-template-columns:repeat(9,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:7px!important;flex:none!important;background:#fff!important}
-.product-model.card-model>.face-verso .model-qr i{display:block!important;width:5px!important;height:5px!important}
-.product-model.card-model>.face-verso .nfc-mark{display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;opacity:1!important;visibility:visible!important}
-.product-model.card-model>.face-verso .nfc-mark svg{display:block!important;width:36px!important;height:36px!important}
-.product-model.plate-model{width:154px;height:282px;transform-style:preserve-3d!important;filter:drop-shadow(0 22px 20px #0008)}
-.product-model.plate-model>.face-frente,.product-model.plate-model>.face-verso{position:absolute!important;left:2px!important;top:0!important;right:auto!important;bottom:auto!important;inset:auto!important;width:150px!important;height:200px!important;border-radius:1px!important;overflow:hidden!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;background:linear-gradient(105deg,#ffffff45 0%,#dffaff0a 20%,#ffffff08 55%,#ffffff35 100%)!important;border:1px solid #eaffffcf!important;box-shadow:inset 0 0 0 1px #ffffff45,inset 0 0 16px #d9fbff12,0 0 2px #ffffffc9!important}
-.product-model.plate-model>.face-frente{transform:rotateY(0deg) translateZ(1.5px)!important;z-index:2}
-.product-model.plate-model>.face-verso{transform:rotateY(180deg) translateZ(1.5px)!important;z-index:1;display:flex!important;visibility:visible!important;opacity:1!important}
-.product-model.plate-model>.face-verso .back-tools{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:15px!important;width:100%!important;height:100%!important;padding:8px!important}
-.product-model.plate-model>.face-verso .model-qr{display:grid!important;grid-template-columns:repeat(5,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:6px!important;flex:none!important;background:#fff!important}
-.product-model.plate-model>.face-verso .model-qr i{display:block!important;width:5px!important;height:5px!important}
-.product-model.plate-model>.face-verso .nfc-mark{display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;color:#e8ffff!important}
-.product-model.plate-model>.face-verso .nfc-mark svg{display:block!important;width:32px!important;height:32px!important}
-.product-model.plate-model .plate-base,.product-model.plate-model .plate-rear-foot{display:block!important;position:absolute!important;left:2px!important;top:199px!important;width:150px!important;height:82px!important;transform-origin:top center!important;transform:rotateX(-90deg) translateZ(1px)!important;pointer-events:none!important;backface-visibility:visible!important}
-.product-model.plate-model .plate-base{z-index:3!important;background:linear-gradient(180deg,#ffffff70,#dffaff18 28%,#9cefff0b 65%,#f7ffff55)!important;border:1px solid #e7ffffe0!important;border-top:2px solid #ffffffef!important;box-shadow:inset 0 0 14px #d8fbff20,0 0 3px #ffffffbd!important}
-.product-model.plate-model .plate-rear-foot{z-index:1!important;transform:rotateX(-90deg) translateZ(-1px)!important;background:linear-gradient(180deg,#ffffff24,#dffaff08 55%,#ffffff32)!important;border:1px solid #dfffff9c!important}
-.product-model.plate-model .plate-edge{top:1px!important;height:200px!important}
-.product-model.plate-model .plate-edge.left{left:1px!important}
-.product-model.plate-model .plate-edge.right{left:151px!important}
-.product-model.plate-model .plate-top-edge{left:2px!important;width:150px!important}
-@media(max-width:520px){.product-view{min-height:300px}.product-model.card-model{width:min(220px,76vw);height:auto;aspect-ratio:220/138}.product-model.plate-model{transform-origin:center center}}
-@media(prefers-reduced-motion:reduce){.product-model{transition:none!important}}
-
-
-/* AJUSTE CIRÚRGICO V2 — superfícies, arestas e responsividade do modelo 3D */
-.product-view{
-  width:100%;
-  min-width:0;
-  min-height:330px;
-  padding:18px 10px 24px;
-  overflow:visible;
-  background:transparent!important;
-  border:0!important;
-  border-radius:0!important;
-  box-shadow:none!important;
-  outline:0!important;
-  perspective:1200px;
-  perspective-origin:50% 45%;
-  touch-action:none;
-  -webkit-user-select:none;
-  user-select:none;
-  -webkit-tap-highlight-color:transparent;
-}
-.product-model{
-  position:relative;
-  flex:none;
-  transform-origin:50% 50%;
-  transform-style:preserve-3d!important;
-  backface-visibility:visible;
-  -webkit-backface-visibility:visible;
-  will-change:transform;
-  transition:transform .08s linear;
-  filter:drop-shadow(0 18px 14px rgb(0 0 0 / .36)) drop-shadow(0 3px 3px rgb(0 0 0 / .24));
-}
-.product-model.card-model{
-  width:220px;
-  height:138px;
-  aspect-ratio:220/138;
-}
-.product-model.card-model>.face-frente,
-.product-model.card-model>.face-verso{
-  position:absolute!important;
-  inset:0!important;
-  display:flex!important;
-  width:100%!important;
-  height:100%!important;
-  overflow:hidden!important;
-  border:1px solid rgb(103 232 249 / .68)!important;
-  border-radius:11px!important;
-  -webkit-backface-visibility:hidden!important;
-  backface-visibility:hidden!important;
-}
-.product-model.card-model>.face-frente{
-  transform:rotateY(0deg) translateZ(1.6px)!important;
-  background:linear-gradient(135deg,rgb(8 13 19 / .96),rgb(8 19 29 / .88) 58%,rgb(22 54 67 / .82))!important;
-  box-shadow:inset 0 1px 0 rgb(255 255 255 / .16),inset 0 0 24px rgb(103 232 249 / .08)!important;
-}
-.product-model.card-model>.face-frente:after{
-  content:"";
-  position:absolute;
-  inset:1px;
-  border-radius:9px;
-  pointer-events:none;
-  background:linear-gradient(125deg,rgb(255 255 255 / .12),transparent 25% 70%,rgb(103 232 249 / .06));
-}
-.product-model.card-model>.face-verso{
-  transform:rotateY(180deg) translateZ(1.6px)!important;
-  justify-content:center!important;
-  align-items:center!important;
-  background:linear-gradient(145deg,rgb(7 13 20 / .98),rgb(12 29 40 / .96))!important;
-  box-shadow:inset 0 1px 0 rgb(255 255 255 / .12),inset 0 0 20px rgb(103 232 249 / .06)!important;
-  visibility:visible!important;
-  opacity:1!important;
-}
-.product-model.card-model>.face-verso .back-tools{
-  width:100%!important;
-  height:100%!important;
-  display:flex!important;
-  flex-direction:row!important;
-  align-items:center!important;
-  justify-content:space-evenly!important;
-  gap:20px!important;
-  padding:12px 18px!important;
-}
-.product-model.card-model>.face-verso .model-qr{
-  flex:none!important;
-  display:grid!important;
-  grid-template-columns:repeat(9,5px)!important;
-  grid-auto-rows:5px!important;
-  gap:2px!important;
-  padding:7px!important;
-  border:1px solid #eaffff!important;
-  background:#fff!important;
-  box-shadow:0 0 12px rgb(103 232 249 / .12)!important;
-}
-.product-model.card-model>.face-verso .model-qr i{
-  display:block!important;
-  width:5px!important;
-  height:5px!important;
-  background:#071018!important;
-}
-.product-model.card-model>.face-verso .nfc-mark{
-  display:flex!important;
-  flex:none!important;
-  align-items:center!important;
-  justify-content:center!important;
-  color:#67e8f9!important;
-  filter:drop-shadow(0 0 5px rgb(103 232 249 / .35));
-}
-.product-model.card-model>.face-verso .nfc-mark svg{
-  display:block!important;
-  width:38px!important;
-  height:38px!important;
-}
-
-/* Placa 3:4: painel vertical 150 × 200 e base que se projeta para trás no eixo Z. */
-.product-model.plate-model{
-  position:relative;
-  width:154px;
-  height:282px;
-  transform-style:preserve-3d!important;
-  filter:drop-shadow(0 19px 16px rgb(0 0 0 / .32));
-}
-.product-model.plate-model>.face-frente,
-.product-model.plate-model>.face-verso{
-  position:absolute!important;
-  top:0!important;
-  left:2px!important;
-  right:auto!important;
-  bottom:auto!important;
-  inset:auto!important;
-  display:flex!important;
-  width:150px!important;
-  height:200px!important;
-  overflow:hidden!important;
-  border:1px solid rgb(235 255 255 / .78)!important;
-  border-radius:1px!important;
-  -webkit-backface-visibility:hidden!important;
-  backface-visibility:hidden!important;
-  background:linear-gradient(105deg,rgb(255 255 255 / .30) 0%,rgb(223 250 255 / .09) 18%,rgb(200 248 255 / .035) 48%,rgb(255 255 255 / .17) 76%,rgb(231 253 255 / .24) 100%)!important;
-  box-shadow:inset 0 0 0 1px rgb(255 255 255 / .34),inset 0 0 18px rgb(217 251 255 / .10),0 0 2px rgb(245 255 255 / .65)!important;
-  color:#f4fbff!important;
-}
-.product-model.plate-model>.face-frente{
-  transform:rotateY(0deg) translateZ(1.6px)!important;
-  z-index:2!important;
-}
-.product-model.plate-model>.face-frente:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(112deg,rgb(255 255 255 / .19),transparent 18% 74%,rgb(255 255 255 / .11));
-  box-shadow:inset 2px 0 0 rgb(255 255 255 / .20),inset -1px 0 0 rgb(255 255 255 / .22);
-}
-.product-model.plate-model>.face-verso{
-  transform:rotateY(180deg) translateZ(1.6px)!important;
-  z-index:1!important;
-  justify-content:center!important;
-  align-items:center!important;
-  visibility:visible!important;
-  opacity:1!important;
-}
-.product-model.plate-model>.face-verso .back-tools{
-  display:flex!important;
-  flex-direction:row!important;
-  align-items:center!important;
-  justify-content:center!important;
-  gap:14px!important;
-  width:100%!important;
-  height:100%!important;
-  padding:8px!important;
-}
-.product-model.plate-model>.face-verso .model-qr{
-  display:grid!important;
-  grid-template-columns:repeat(5,5px)!important;
-  grid-auto-rows:5px!important;
-  gap:2px!important;
-  padding:6px!important;
-  flex:none!important;
-  border:1px solid #eaffff!important;
-  background:#fff!important;
-}
-.product-model.plate-model>.face-verso .model-qr i{
-  display:block!important;
-  width:5px!important;
-  height:5px!important;
-  background:#071018!important;
-}
-.product-model.plate-model>.face-verso .nfc-mark{
-  display:flex!important;
-  flex:none!important;
-  align-items:center!important;
-  justify-content:center!important;
-  color:#e8ffff!important;
-  filter:drop-shadow(0 0 4px rgb(103 232 249 / .30));
-}
-.product-model.plate-model>.face-verso .nfc-mark svg{
-  display:block!important;
-  width:32px!important;
-  height:32px!important;
-}
-
-/* Aba inferior: superfície horizontal transparente; a aresta superior coincide com a dobra do painel. */
-.product-model.plate-model .plate-base,
-.product-model.plate-model .plate-rear-foot{
-  display:block!important;
-  position:absolute!important;
-  left:2px!important;
-  top:199px!important;
-  width:150px!important;
-  height:82px!important;
-  transform-origin:50% 0%;
-  transform:rotateX(-90deg) translateZ(1px)!important;
-  pointer-events:none!important;
-  backface-visibility:visible!important;
-  -webkit-backface-visibility:visible!important;
-}
-.product-model.plate-model .plate-base{
-  z-index:3!important;
-  background:linear-gradient(180deg,rgb(255 255 255 / .44) 0%,rgb(223 250 255 / .13) 24%,rgb(156 239 255 / .055) 58%,rgb(247 255 255 / .32) 100%)!important;
-  border:1px solid rgb(231 255 255 / .78)!important;
-  border-top:2px solid rgb(255 255 255 / .92)!important;
-  box-shadow:inset 0 0 14px rgb(216 251 255 / .13),0 0 3px rgb(255 255 255 / .55)!important;
-}
-.product-model.plate-model .plate-base:before{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  top:0;
-  height:3px;
-  background:linear-gradient(90deg,rgb(255 255 255 / .95),rgb(190 248 255 / .38),rgb(255 255 255 / .88));
-  transform:translateZ(1px);
-}
-.product-model.plate-model .plate-base:after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:0;
-  height:1px;
-  background:rgb(255 255 255 / .74);
-}
-.product-model.plate-model .plate-rear-foot{
-  z-index:1!important;
-  transform:rotateX(-90deg) translateZ(-1.5px)!important;
-  background:linear-gradient(180deg,rgb(255 255 255 / .14),rgb(223 250 255 / .035) 45%,rgb(255 255 255 / .20))!important;
-  border:1px solid rgb(223 255 255 / .54)!important;
-}
-.product-model.plate-model .plate-edge{
-  top:1px!important;
-  height:200px!important;
-  width:2px!important;
-  background:linear-gradient(180deg,rgb(255 255 255 / .92),rgb(197 250 255 / .36) 22%,rgb(255 255 255 / .62) 76%,rgb(233 255 255 / .90))!important;
-  box-shadow:0 0 3px rgb(223 255 255 / .48)!important;
-}
-.product-model.plate-model .plate-edge.left{left:1px!important}
-.product-model.plate-model .plate-edge.right{left:151px!important;width:1px!important}
-.product-model.plate-model .plate-top-edge{
-  left:2px!important;
-  top:0!important;
-  width:150px!important;
-  height:2px!important;
-  background:rgb(255 255 255 / .85)!important;
-  box-shadow:0 0 3px rgb(255 255 255 / .52)!important;
-}
-
-/* Navegação e controles: sem corte horizontal em telas estreitas. */
-.tabs{min-width:0;scrollbar-width:thin;scrollbar-color:#294456 transparent}
-.tabs .tab{flex:0 0 auto}
-.vitrine,.stage,.vitrine-list,.custom-controls{min-width:0}
-.custom-controls input,.custom-controls select{min-width:0;max-width:100%}
-@media(max-width:680px){
-  .vitrine{grid-template-columns:minmax(0,1fr);gap:12px}
-  .vitrine-list{padding:10px;background:rgb(11 18 29 / .72)}
-  .vitrine-list .choice-list{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .vitrine-choice{min-width:0;align-items:flex-start}
-  .vitrine-choice span:last-child{min-width:0}
-  .vitrine-choice strong,.vitrine-choice small{overflow-wrap:anywhere}
-  .stage-head{align-items:flex-start}
-  .stage-pill{flex:0 0 auto}
-  .product-view{min-height:310px;padding:12px 4px 22px}
-  .custom-controls{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .custom-controls .field:first-child,.custom-controls .design-meeting{grid-column:1/-1}
-}
-@media(max-width:380px){
-  .product-view{min-height:290px}
-  .product-model.card-model{width:min(220px,72vw);height:auto;aspect-ratio:220/138}
-  .product-model.card-model>.face-verso .back-tools{gap:12px!important;padding:10px!important}
-  .product-model.card-model>.face-verso .model-qr{transform:scale(.92);transform-origin:center}
-  .product-model.plate-model{transform-origin:50% 50%}
-  .vitrine-list .choice-list{grid-template-columns:minmax(0,1fr)}
-  .stage-head{flex-wrap:wrap}
-}
-@media(prefers-reduced-motion:reduce){
-  .product-model{transition:none!important;will-change:auto}
-}
-
-
-/* Correção focada: verso independente e apoio traseiro visível da placa. */
-.product-model.card-model>.face-frente{
-  backface-visibility:hidden!important;
-  -webkit-backface-visibility:hidden!important;
-}
-.product-model.card-model>.face-verso{
-  transform:rotateY(180deg) translateZ(1.8px)!important;
-  backface-visibility:hidden!important;
-  -webkit-backface-visibility:hidden!important;
-  background:linear-gradient(145deg,#08111a 0%,#102633 58%,#070b11 100%)!important;
-}
-.product-model.card-model>.face-verso>.back-tools{
-  display:flex!important;
-  width:100%!important;height:100%!important;
-  flex-direction:row!important;justify-content:space-evenly!important;
-  align-items:center!important;gap:18px!important;
-}
-.product-model.card-model>.face-verso .model-qr{
-  flex:none!important;background:#fff!important;border:2px solid #fff!important;
-  box-shadow:0 0 0 1px #67e8f9,0 0 12px #67e8f933!important;
-}
-.product-model.card-model>.face-verso .nfc-mark{flex:none!important;color:#67e8f9!important}
-.product-model.plate-model .plate-support{
-  display:block!important;
-  position:absolute!important;
-  left:70px!important;
-  top:195px!important;
-  width:10px!important;
-  height:78px!important;
-  transform-origin:50% 0!important;
-  transform:rotateX(-90deg) rotateZ(-24deg) translateZ(-26px)!important;
-  background:linear-gradient(90deg,#ffffff20,#eaffff9c 38%,#ffffff25 70%,#dffaff72)!important;
-  border:1px solid #eaffffb0!important;
-  box-shadow:0 0 4px #eaffff65!important;
-  z-index:4!important;
-  pointer-events:none!important;
-  backface-visibility:visible!important;
-  -webkit-backface-visibility:visible!important;
-}
-.product-model.plate-model .plate-base{
-  transform:rotateX(-90deg) translateZ(1px)!important;
-}
-.product-model.plate-model .plate-rear-foot{
-  transform:rotateX(-90deg) translateZ(-2px)!important;
-}
-@media(max-width:520px){
- .product-model.plate-model .plate-support{left:70px!important}
-}
+.product-model .model-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;overflow:hidden;color:#f4fbff;border:1px solid #8ff5ffad;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.product-model.card-model .face-frente{transform:rotateY(0deg) translateZ(1.6px);background:linear-gradient(135deg,rgb(8 13 19 / .97),rgb(8 19 29 / .91) 58%,rgb(22 54 67 / .87));box-shadow:inset 0 1px 0 rgb(255 255 255 / .18),inset 0 0 25px rgb(103 232 249 / .09)}
+.product-model.card-model .face-frente:after{content:"";position:absolute;inset:1px;border-radius:9px;pointer-events:none;background:linear-gradient(125deg,rgb(255 255 255 / .12),transparent 28% 72%,rgb(103 232 249 / .07))}
+.model-brand{color:var(--cyan);font-size:10px;font-weight:900;letter-spacing:.22em}
+.model-label{max-width:85%;overflow-wrap:anywhere;text-align:center;font-size:18px;font-weight:850;line-height:1.15}
+.front-identity{color:#b5d7e7;font-size:8px;letter-spacing:.1em;text-align:center}
+.product-model.card-model .face-verso{transform:rotateY(180deg) translateZ(1.6px);justify-content:center;align-items:center;background:linear-gradient(145deg,#08111a,#102633 58%,#070b11);box-shadow:inset 0 1px 0 rgb(255 255 255 / .12),inset 0 0 20px rgb(103 232 249 / .07)}
+.back-tools{display:flex;flex-direction:row;align-items:center;justify-content:space-evenly;gap:20px;width:100%;height:100%;padding:12px 18px}
+.model-qr{display:grid;grid-template-columns:repeat(9,5px);grid-auto-rows:5px;gap:2px;flex:none;padding:7px;border:1px solid #eaffff;background:#fff;box-shadow:0 0 12px rgb(103 232 249 / .13)}
+.model-qr i{display:block;width:5px;height:5px;background:#071018}
+.model-qr i:nth-child(3n),.model-qr i:nth-child(7n){background:#fff}
+.nfc-mark{display:flex;flex:none;align-items:center;justify-content:center;color:#67e8f9;filter:drop-shadow(0 0 5px rgb(103 232 249 / .35))}
+.nfc-mark svg{display:block;width:38px;height:38px}
+.nfc-mark svg path{stroke-dasharray:42;animation:nfc-wave 2.4s ease-in-out infinite}
+@keyframes nfc-wave{0%,100%{opacity:.55}50%{opacity:1}}
+.product-model.plate-model{width:154px;height:282px;transform-style:preserve-3d;filter:drop-shadow(0 20px 17px rgb(0 0 0 / .35))}
+.product-model.plate-model .model-face{top:0;left:2px;right:auto;bottom:auto;inset:auto;width:150px;height:200px;gap:8px;border:1px solid rgb(235 255 255 / .78);border-radius:1px;background:linear-gradient(105deg,rgb(255 255 255 / .34) 0%,rgb(223 250 255 / .10) 18%,rgb(200 248 255 / .035) 48%,rgb(255 255 255 / .18) 76%,rgb(231 253 255 / .26) 100%);box-shadow:inset 0 0 0 1px rgb(255 255 255 / .35),inset 0 0 18px rgb(217 251 255 / .10),0 0 2px rgb(245 255 255 / .7)}
+.product-model.plate-model .face-frente{transform:rotateY(0deg) translateZ(1.6px);z-index:2}
+.product-model.plate-model .face-frente:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(112deg,rgb(255 255 255 / .2),transparent 18% 74%,rgb(255 255 255 / .12));box-shadow:inset 2px 0 0 rgb(255 255 255 / .2),inset -1px 0 0 rgb(255 255 255 / .22)}
+.product-model.plate-model .face-verso{transform:rotateY(180deg) translateZ(1.6px);z-index:1;justify-content:center;align-items:center}
+.product-model.plate-model .face-verso .back-tools{justify-content:center;gap:14px;padding:8px}
+.product-model.plate-model .face-verso .model-qr{grid-template-columns:repeat(5,5px);grid-auto-rows:5px;gap:2px;padding:6px}
+.product-model.plate-model .face-verso .model-qr i{width:5px;height:5px}
+.product-model.plate-model .face-verso .nfc-mark svg{width:32px;height:32px}
+.plate-base,.plate-rear-foot,.plate-support,.plate-edge,.plate-top-edge{position:absolute;display:none;pointer-events:none}
+.product-model.plate-model .plate-base{display:block;left:2px;top:199px;width:150px;height:82px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(1px);z-index:3;background:linear-gradient(180deg,rgb(255 255 255 / .46),rgb(223 250 255 / .14) 24%,rgb(156 239 255 / .06) 58%,rgb(247 255 255 / .34));border:1px solid rgb(231 255 255 / .82);border-top:2px solid rgb(255 255 255 / .95);box-shadow:inset 0 0 14px rgb(216 251 255 / .15),0 0 3px rgb(255 255 255 / .55);backface-visibility:visible}
+.product-model.plate-model .plate-base:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:rgb(255 255 255 / .8)}
+.product-model.plate-model .plate-rear-foot{display:block;left:2px;top:199px;width:150px;height:82px;transform-origin:50% 0;transform:rotateX(-90deg) translateZ(-1.5px);z-index:1;background:linear-gradient(180deg,rgb(255 255 255 / .18),rgb(223 250 255 / .04) 45%,rgb(255 255 255 / .22));border:1px solid rgb(223 255 255 / .56);backface-visibility:visible}
+.product-model.plate-model .plate-support{display:block;top:100px;width:82px;height:100px;transform-origin:0 0;transform:rotateY(90deg);clip-path:polygon(0 0,0 100%,100% 100%);background:linear-gradient(90deg,rgb(255 255 255 / .28),rgb(223 250 255 / .12) 48%,rgb(255 255 255 / .48));border:1px solid rgb(230 255 255 / .58);backface-visibility:visible}
+.product-model.plate-model .plate-support.support-left{left:2px}
+.product-model.plate-model .plate-support.support-right{left:148px}
+.product-model.plate-model .plate-edge{display:block;top:1px;width:2px;height:200px;background:linear-gradient(180deg,#fff,rgb(197 250 255 / .38) 22%,rgb(255 255 255 / .65) 76%,#e9ffff);box-shadow:0 0 3px rgb(223 255 255 / .5)}
+.product-model.plate-model .plate-edge.left{left:1px}
+.product-model.plate-model .plate-edge.right{left:151px;width:1px}
+.product-model.plate-model .plate-top-edge{display:block;left:2px;top:0;width:150px;height:2px;background:rgb(255 255 255 / .9);box-shadow:0 0 3px rgb(255 255 255 / .55)}
+.drag-hint{margin-top:-8px;color:var(--muted);font-size:11px;text-align:center}
+.custom-controls{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}
+.custom-controls .field{min-width:0;margin:0}
+.custom-controls .design-meeting{grid-column:1/-1}
+.custom-controls label{font-size:11px}
+.custom-controls input,.custom-controls select{width:100%;min-width:0;max-width:100%;font-size:12px}
+.stage-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.stage-price{font-size:21px;font-weight:850}
+.stage-price small{color:var(--muted);font-size:11px;font-weight:500}
+.stage-note{color:var(--muted);font-size:11px}
+@media(max-width:850px){.vitrine{grid-template-columns:minmax(0,1fr);gap:14px}.vitrine-list{padding:12px}.choice-list{grid-template-columns:repeat(2,minmax(0,1fr))}.vitrine-choice{align-items:flex-start}.stage-head h2{font-size:26px}}
+@media(max-width:520px){.product-view{min-height:310px;padding:14px 4px 22px}.custom-controls{grid-template-columns:repeat(2,minmax(0,1fr))}.custom-controls .field:first-child,.custom-controls .design-meeting{grid-column:1/-1}.stage-head{flex-wrap:wrap}.stage-pill{margin-left:auto}.product-model.card-model{width:min(220px,76vw);height:auto;aspect-ratio:220/138}.product-model.plate-model{transform-origin:50% 50%}}
+@media(max-width:380px){.choice-list{grid-template-columns:minmax(0,1fr)}.product-view{min-height:290px}.back-tools{gap:12px;padding:10px}.product-model.card-model .model-qr{transform:scale(.92)}.stage-bottom .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.product-model{transition:none;will-change:auto}.nfc-mark svg path{animation:none}}
 
 </style>
 </head>
@@ -501,7 +119,7 @@
     <div class="product-model card-model" id="productModel" style="--model-color:#123246">
      <div class="model-face front face-frente"><span class="model-brand">VÉRTICE NFC</span><span class="model-label" id="modelTextFront">SEU NEGÓCIO</span><span class="front-identity" id="modelCustomerData">SEU LINK · SEU CONTATO</span></div>
      <div class="model-face back face-verso"><div class="back-tools"><span class="model-qr" aria-label="QR Code ilustrativo"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="nfc-mark" aria-label="Símbolo NFC"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="12" height="19" rx="2"/><path d="M7 10h4M8 23h2M19 11c3 3 3 7 0 10M22 8c5 5 5 11 0 16M25 5c7 7 7 15 0 22"/></svg></span></div></div>
-     <div class="plate-base" aria-hidden="true"></div><div class="plate-rear-foot" aria-hidden="true"></div><div class="plate-support" aria-hidden="true"></div><div class="plate-edge left" aria-hidden="true"></div><div class="plate-edge right" aria-hidden="true"></div><div class="plate-top-edge" aria-hidden="true"></div>
+     <div class="plate-base" aria-hidden="true"></div><div class="plate-rear-foot" aria-hidden="true"></div><div class="plate-support support-left" aria-hidden="true"></div><div class="plate-support support-right" aria-hidden="true"></div><div class="plate-edge left" aria-hidden="true"></div><div class="plate-edge right" aria-hidden="true"></div><div class="plate-top-edge" aria-hidden="true"></div>
     </div>
    </div>
    <div class="drag-hint">↔ Arraste com o mouse ou dedo para girar em 360°</div>
@@ -553,9 +171,21 @@ sites:[
 const allItems=Object.values(catalog).flat();
 const money=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
 const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
-const cart=new Map();
+const CART_STORAGE_KEY="vertice-nfc-cart-v1";
+function loadCart(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(CART_STORAGE_KEY)||"[]");
+  if(!Array.isArray(saved))return new Map();
+  return new Map(saved.filter(entry=>Array.isArray(entry)&&entry.length===2&&findItem(entry[0])&&Number.isInteger(entry[1])&&entry[1]>0&&entry[1]<=99));
+ }catch(error){return new Map();}
+}
+function persistCart(){
+ try{localStorage.setItem(CART_STORAGE_KEY,JSON.stringify([...cart]));}
+ catch(error){console.warn("Não foi possível persistir o carrinho neste navegador.",error);}
+}
+const cart=loadCart();
 let appliedCoupon="";
-const couponRules={}; // Cadastre cupons reais aqui, ex.: {BEMVINDO:{type:"percent",value:5}}.
+const couponRules=Object.freeze({}); // Registre apenas cupons autorizados: CODIGO:{type:"percent",value:5} ou {type:"fixed",value:10}.
 function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 function wa(message){window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
 function findItem(id){return allItems.find(item=>item.id===id);}
@@ -591,10 +221,16 @@ function removeFromCart(id){cart.delete(id);renderCart();}
 function subtotal(){return [...cart].reduce((sum,[id,qty])=>sum+findItem(id).price*qty,0);}
 function discount(total){const rule=couponRules[appliedCoupon];if(!rule)return 0;return rule.type==="percent"?total*Math.min(rule.value,100)/100:Math.min(total,Math.max(0,rule.value));}
 function renderCart(){
- const entries=[...cart];document.getElementById("cartCount").textContent=entries.reduce((n,[,qty])=>n+qty,0);
+ persistCart();
+ const entries=[...cart];
+ document.getElementById("cartCount").textContent=entries.reduce((n,[,qty])=>n+qty,0);
  const box=document.getElementById("cartItems");
- box.innerHTML=entries.length?entries.map(([id,qty])=>{const item=findItem(id);return '<div class="cart-row"><div><strong>'+escapeHTML(item.name)+'</strong><p>'+qty+' × '+itemText(item)+'</p></div><strong>'+money(item.price*qty)+'</strong><button type="button" data-remove="'+id+'" aria-label="Remover '+escapeHTML(item.name)+'">Remover</button></div>';}).join(""):'<p class="notice">Seu carrinho está vazio.</p>';
- const total=subtotal()-discount(subtotal());document.getElementById("subtotal").textContent=money(subtotal());
+ box.innerHTML=entries.length?entries.map(([id,qty])=>{
+  const item=findItem(id);
+  return '<div class="cart-row"><div><strong>'+escapeHTML(item.name)+'</strong><p>'+qty+' × '+itemText(item)+'</p></div><strong>'+money(item.price*qty)+'</strong><button type="button" data-remove="'+id+'" aria-label="Remover '+escapeHTML(item.name)+'">Remover</button></div>';
+ }).join(""):'<p class="notice">Seu carrinho está vazio.</p>';
+ const total=subtotal()-discount(subtotal());
+ document.getElementById("subtotal").textContent=money(subtotal());
  if(appliedCoupon&&couponRules[appliedCoupon])document.getElementById("subtotal").textContent=money(total)+" (cupom aplicado)";
 }
 function applyCoupon(){

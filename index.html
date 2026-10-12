@@ -13,6 +13,19 @@
 @media(max-width:640px){body{font-size:14px}.shell{width:calc(100% - 20px)}.nav{display:grid;grid-template-columns:1fr auto;gap:10px;padding:11px 0;min-height:0}.brand{font-size:16px}.tools{display:flex;grid-column:1 / -1;grid-row:2;width:100%;margin:0;gap:8px}.search{width:auto;min-width:0;flex:1;font-size:13px;padding:10px}.cart{padding:8px 10px;gap:6px;min-height:40px}.cart-label{display:inline;font-size:11px}.tabs{grid-column:1 / -1;grid-row:3;order:initial;display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;width:calc(100vw - 20px);flex-basis:auto;padding-bottom:3px;scrollbar-width:thin;overscroll-behavior-x:contain}.tab{flex:0 0 auto;padding:9px 11px;font-size:11px}.hero{padding:30px 0 22px;gap:18px}.visual{min-height:205px;padding:21px}.visual strong{font-size:26px}.qr{width:58px;height:58px}.trust{padding-bottom:20px;gap:10px;font-size:11px}.section{padding:20px 0 42px;min-height:300px}.grid{grid-template-columns:1fr;gap:11px}.card{padding:17px;min-height:0}.card h3{margin-top:12px}.card p{margin-bottom:16px}.card-actions .btn{min-height:42px}.shipping{padding:17px}.drawer{padding:18px}.drawer-head h2{font-size:25px}.total{font-size:17px}.footer{padding-bottom:28px}}
 @media(min-width:641px) and (max-width:900px){.nav{display:flex;flex-wrap:wrap;padding:12px 0}.tabs{order:3;flex-basis:100%;overflow-x:auto}.tools{margin-left:auto}.hero{grid-template-columns:1fr;gap:20px;padding-top:42px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Fundo contínuo e discreto em todas as abas: degradê suave, sem excesso de efeitos */
+html{background:var(--bg);isolation:isolate}
+body{position:relative;isolation:isolate;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 12% 8%,rgba(117,79,190,.22),transparent 42%),radial-gradient(ellipse at 88% 28%,rgba(38,139,158,.16),transparent 40%),linear-gradient(145deg,#0a0a0d 0%,#101019 48%,#0a0d11 100%);background-repeat:no-repeat}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,transparent 0%,rgba(7,8,12,.15) 55%,rgba(7,8,12,.35) 100%)}
+.top{background:rgba(10,10,13,.84)}
+.hero .visual{background:linear-gradient(145deg,rgba(35,33,51,.84),rgba(13,17,23,.9));box-shadow:0 18px 55px rgba(0,0,0,.22)}
+.card{background:linear-gradient(145deg,rgba(27,28,38,.76),rgba(15,16,22,.82));border-color:rgba(255,255,255,.09);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+.card:hover{border-color:rgba(167,139,250,.52);box-shadow:0 12px 34px rgba(0,0,0,.16)}
+.shipping{background:rgba(20,21,28,.72)}
+.section{background:transparent}
+@media(prefers-reduced-transparency:reduce){.top{background:#0a0a0c}.card,.shipping,.hero .visual{background:#14151c}}
 </style>
 </head>
 <body>

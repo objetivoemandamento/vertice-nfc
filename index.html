@@ -1,168 +1,142 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090d14">
-<meta name="description" content="Placas NFC e QR Code, combos e serviços digitais para negócios.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d14"><meta name="description" content="Placas NFC, QR Code, sites e serviços digitais para negócios.">
 <title>Vértice NFC — Conecte seu negócio</title>
 <style>
-:root{color-scheme:dark;--bg:#090d14;--panel:#111a27;--line:#26364a;--text:#eef5ff;--muted:#9aabc0;--cyan:#67e8f9;--blue:#60a5fa}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#0b1522,#090d14 55%,#0c1220);color:var(--text);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:5;background:#090d14ed;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.nav{display:flex;align-items:center;gap:16px;padding:14px 0;flex-wrap:wrap}.brand{font-weight:850;letter-spacing:-.5px;font-size:19px;white-space:nowrap}.brand span{color:var(--cyan)}.tabs{display:flex;gap:5px;flex:1;overflow-x:auto}.tab{border:1px solid transparent;border-radius:9px;background:transparent;color:var(--muted);padding:9px 11px;white-space:nowrap;font-size:12px;font-weight:700}.tab:hover,.tab.active{color:var(--text);border-color:var(--line);background:#67e8f912}.search{min-width:180px;width:220px;max-width:100%;border:1px solid var(--line);border-radius:10px;background:#0b121d;color:var(--text);padding:10px 12px}.hero{padding:55px 0 30px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.hero h1{font-size:clamp(36px,6vw,60px);letter-spacing:-2px;line-height:1.05;margin:12px 0}.hero h1 span{color:var(--cyan)}.lead,.desc{color:var(--muted)}.lead{max-width:650px}.btn{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:#152234;color:var(--text);font-size:12px;font-weight:800;text-decoration:none}.btn.primary{background:var(--cyan);color:#061018;border-color:var(--cyan)}.btn:hover{filter:brightness(1.08)}main{padding-bottom:55px}.section{display:none;padding:24px 0 45px;min-height:320px}.section.active{display:block}.heading{margin-bottom:20px}.heading h2{font-size:clamp(27px,4vw,36px);letter-spacing:-1px;line-height:1.2;margin:6px 0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{display:flex;flex-direction:column;gap:10px;min-width:0;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#142235,#101722);padding:19px}.card h3{font-size:16px;line-height:1.35;margin:0}.card p{font-size:13px;color:var(--muted);margin:0}.price{font-size:25px;font-weight:850;letter-spacing:-.7px;margin-top:auto;padding-top:7px}.price small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}.card .btn{margin-top:4px;width:100%}.empty{display:none;color:var(--muted);padding:20px;border:1px dashed var(--line);border-radius:12px}.form{max-width:600px;border:1px solid var(--line);border-radius:15px;background:var(--panel);padding:20px}.field{display:grid;gap:6px;margin-bottom:14px}.field label{font-size:12px;color:var(--muted)}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#0a111b;color:var(--text)}.notice{color:var(--muted);font-size:12px}.footer{border-top:1px solid var(--line);padding:22px 0 35px;color:var(--muted);font-size:12px}
-@media(max-width:760px){.nav{gap:10px}.brand{margin-right:auto}.tabs{order:3;flex-basis:100%;width:100%}.search{flex:1;width:auto;min-width:0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:38px}}
-@media(max-width:520px){.wrap{width:calc(100% - 22px)}.grid{grid-template-columns:1fr}.card{padding:16px}.hero h1{letter-spacing:-1.2px}.form{padding:15px}.section{padding-top:18px}}
+:root{color-scheme:dark;--bg:#090d14;--panel:#111a27;--line:#26364a;--text:#eef5ff;--muted:#9aabc0;--cyan:#67e8f9}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(145deg,#0b1522,#090d14 55%,#0c1220);color:var(--text);font:15px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button,a{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.wrap{width:min(1080px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:5;background:#090d14ed;border-bottom:1px solid var(--line);backdrop-filter:blur(10px)}.nav{display:flex;align-items:center;gap:12px;padding:13px 0;flex-wrap:wrap}.brand{font-weight:850;font-size:19px;white-space:nowrap;color:inherit;text-decoration:none}.brand span{color:var(--cyan)}.tabs{display:flex;gap:4px;flex:1;overflow-x:auto}.tab,.cart-btn{border:1px solid transparent;border-radius:9px;background:transparent;color:var(--muted);padding:9px 10px;white-space:nowrap;font-size:12px;font-weight:750}.tab:hover,.tab.active{color:var(--text);border-color:var(--line);background:#67e8f912}.search{min-width:150px;width:200px;max-width:100%;border:1px solid var(--line);border-radius:10px;background:#0b121d;color:var(--text);padding:10px 12px}.cart-btn{border-color:var(--line);color:var(--text)}.hero{padding:48px 0 28px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}.hero h1{font-size:clamp(36px,6vw,58px);letter-spacing:-2px;line-height:1.05;margin:12px 0}.hero h1 span{color:var(--cyan)}.lead,.desc,.notice{color:var(--muted)}.lead{max-width:650px}.btn{display:inline-flex;justify-content:center;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:#152234;color:var(--text);font-size:12px;font-weight:800;text-decoration:none}.btn.primary{background:var(--cyan);color:#061018;border-color:var(--cyan)}.btn.secondary{background:transparent}.btn:hover{filter:brightness(1.08)}main{padding-bottom:50px}.section{display:none;padding:22px 0 40px;min-height:300px}.section.active{display:block}.heading{margin-bottom:19px}.heading h2{font-size:clamp(27px,4vw,35px);letter-spacing:-1px;line-height:1.2;margin:6px 0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.card{display:flex;flex-direction:column;gap:10px;min-width:0;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#142235,#101722);padding:18px}.card h3{font-size:16px;line-height:1.35;margin:0}.card p{font-size:13px;color:var(--muted);margin:0}.price{font-size:24px;font-weight:850;letter-spacing:-.6px;margin-top:auto;padding-top:6px}.price small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}.negotiable{font-size:11px;color:var(--cyan)}.card-actions{display:flex;gap:7px}.card-actions .btn{flex:1}.empty{display:none;color:var(--muted);padding:18px;border:1px dashed var(--line);border-radius:12px}.form,.cart-panel{max-width:650px;border:1px solid var(--line);border-radius:15px;background:var(--panel);padding:19px}.field{display:grid;gap:6px;margin-bottom:13px}.field label{font-size:12px;color:var(--muted)}.field input,.field select{width:100%;padding:11px;border:1px solid var(--line);border-radius:9px;background:#0a111b;color:var(--text)}.footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);font-size:12px}.cart-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.cart-row p{margin:0;color:var(--muted);font-size:12px}.cart-row button{border:0;background:transparent;color:var(--cyan);font-size:12px}.cart-total{display:flex;justify-content:space-between;margin:16px 0;font-size:18px;font-weight:800}.small{font-size:11px;color:var(--muted)}.status{min-height:20px;font-size:12px;color:var(--cyan)}
+@media(max-width:850px){.nav{gap:8px}.brand{margin-right:auto}.tabs{order:3;flex-basis:100%;width:100%}.search{flex:1;width:auto;min-width:0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:35px}}
+@media(max-width:520px){.wrap{width:calc(100% - 22px)}.grid{grid-template-columns:1fr}.card{padding:16px}.hero h1{letter-spacing:-1px}.form,.cart-panel{padding:15px}.section{padding-top:17px}.cart-row{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <header class="top"><div class="wrap nav">
-<a class="brand" href="#inicio" style="color:inherit;text-decoration:none">VÉRTICE <span>NFC</span></a>
+<a class="brand" href="#inicio">VÉRTICE <span>NFC</span></a>
 <nav class="tabs" aria-label="Navegação principal">
 <button class="tab active" type="button" data-tab="produtos" aria-selected="true">Produtos</button>
 <button class="tab" type="button" data-tab="combos" aria-selected="false">Planos & Combos</button>
 <button class="tab" type="button" data-tab="servicos" aria-selected="false">Serviços Recorrentes</button>
+<button class="tab" type="button" data-tab="sites" aria-selected="false">Sites</button>
 <button class="tab" type="button" data-tab="frete" aria-selected="false">Frete e Envio</button>
 </nav>
-<input class="search" id="search" type="search" placeholder="Buscar produto ou serviço..." aria-label="Buscar produtos e serviços">
+<input class="search" id="search" type="search" placeholder="Buscar ou descrever o que precisa..." aria-label="Buscar por produtos e serviços">
+<button class="cart-btn" type="button" data-tab="carrinho">Carrinho (<span id="cartCount">0</span>)</button>
 </div></header>
 <div class="wrap" id="inicio">
-<section class="hero">
-<div class="eyebrow">Conectividade para negócios</div>
-<h1>Seu negócio.<br><span>Um toque à frente.</span></h1>
-<p class="lead">Placas NFC e QR Code, combos e serviços digitais para conectar seus clientes ao menu, catálogo e canais de atendimento com praticidade.</p>
-<a class="btn primary" href="#catalogo" id="explore">Explorar soluções ↓</a>
-</section>
+<section class="hero"><div class="eyebrow">Conectividade para negócios</div><h1>Seu negócio.<br><span>Um toque à frente.</span></h1><p class="lead">Placas NFC, QR Code, sites e serviços digitais para conectar clientes ao seu negócio. Precisa de algo específico? Pesquise por uma ideia ou fale conosco.</p><button class="btn primary" type="button" data-tab="produtos">Explorar soluções ↓</button></section>
 <main id="catalogo">
-<section class="section active" data-section="produtos">
-<div class="heading"><div class="eyebrow">Conheça as opções</div><h2>Produtos</h2><p class="desc">Placas avulsas para começar.</p></div>
-<div class="grid" data-grid="produtos"></div><p class="empty" data-empty="produtos">Nenhum produto encontrado. Tente outra busca.</p>
-</section>
-<section class="section" data-section="combos">
-<div class="heading"><div class="eyebrow">Para crescer</div><h2>Planos & Combos</h2><p class="desc">Pacotes para negócios de diferentes tamanhos.</p></div>
-<div class="grid" data-grid="combos"></div><p class="empty" data-empty="combos">Nenhum combo encontrado. Tente outra busca.</p>
-</section>
-<section class="section" data-section="servicos">
-<div class="heading"><div class="eyebrow">Suporte contínuo</div><h2>Serviços recorrentes</h2><p class="desc">Mensalidades para manter suas soluções digitais.</p></div>
-<div class="grid" data-grid="servicos"></div><p class="empty" data-empty="servicos">Nenhum serviço encontrado. Tente outra busca.</p>
-</section>
-<section class="section" data-section="frete">
-<div class="heading"><div class="eyebrow">Logística</div><h2>Frete e envio</h2><p class="desc">Envie os dados para confirmar o valor e o prazo reais. Não exibimos estimativas de frete sem cotação.</p></div>
-<form class="form" id="freteForm">
-<div class="field"><label for="cep">CEP de entrega</label><input id="cep" name="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required></div>
-<div class="field"><label for="quantidade">Quantidade de placas</label><select id="quantidade" name="quantidade"><option>1 unidade</option><option>10 unidades</option><option>100 unidades</option></select></div>
-<div class="field"><label for="modalidade">Modalidade desejada</label><select id="modalidade" name="modalidade"><option>Econômico</option><option>Expresso</option></select></div>
-<button class="btn primary" type="submit">Solicitar cotação no WhatsApp ↗</button>
-<p class="notice">O valor e o prazo serão confirmados antes do pagamento.</p>
-</form>
-</section>
-</main>
-<footer class="footer">© <span id="year"></span> Vértice NFC · Conectividade para negócios.</footer>
+<section class="section active" data-section="produtos"><div class="heading"><div class="eyebrow">Conheça as opções</div><h2>Produtos</h2><p class="desc">Placas avulsas para começar.</p></div><div class="grid" data-grid="produtos"></div><p class="empty" data-empty="produtos">Nenhum resultado semelhante. Tente outros termos, como NFC, cartão, placa ou personalizada.</p></section>
+<section class="section" data-section="combos"><div class="heading"><div class="eyebrow">Para crescer</div><h2>Planos & Combos</h2><p class="desc">Pacotes para negócios de diferentes tamanhos.</p></div><div class="grid" data-grid="combos"></div><p class="empty" data-empty="combos">Nenhum combo encontrado. Tente termos como lote, quantidade, menu ou personalizado.</p></section>
+<section class="section" data-section="servicos"><div class="heading"><div class="eyebrow">Suporte contínuo</div><h2>Serviços recorrentes</h2><p class="desc">Mensalidades para manter suas soluções digitais.</p></div><div class="grid" data-grid="servicos"></div><p class="empty" data-empty="servicos">Nenhum serviço encontrado. Tente menu, manutenção, hospedagem ou site.</p></section>
+<section class="section" data-section="sites"><div class="heading"><div class="eyebrow">Presença digital</div><h2>Criação de sites</h2><p class="desc">Todos os sites são feitos sob medida após reunião online para definir e validar design, estrutura, funcionalidades e integrações. Os valores podem ser negociados conforme escopo.</p></div><div class="grid" data-grid="sites"></div><p class="empty" data-empty="sites">Nenhum pacote de site encontrado. Experimente institucional, loja, landing page ou personalizado.</p><div class="form" style="margin-top:16px"><strong>Como funciona</strong><p class="notice">O projeto é alinhado em reuniões online. Escopo, prazo e eventuais custos de domínio, hospedagem, licenças e integrações são confirmados com você antes do início.</p></div></section>
+<section class="section" data-section="frete"><div class="heading"><div class="eyebrow">Logística</div><h2>Frete e envio</h2><p class="desc">Solicite uma cotação real. O valor e o prazo serão confirmados antes do pagamento.</p></div><form class="form" id="freteForm"><div class="field"><label for="cep">CEP de entrega</label><input id="cep" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="00000-000" required></div><div class="field"><label for="quantidade">Quantidade de placas</label><select id="quantidade"><option>1 unidade</option><option>10 unidades</option><option>100 unidades</option></select></div><div class="field"><label for="modalidade">Modalidade desejada</label><select id="modalidade"><option>Econômico</option><option>Expresso</option></select></div><button class="btn primary" type="submit">Solicitar cotação no WhatsApp ↗</button></form></section>
+<section class="section" data-section="carrinho"><div class="heading"><div class="eyebrow">Seu pedido</div><h2>Carrinho</h2><p class="desc">Revise os itens e informe um cupom, se tiver.</p></div><div class="cart-panel"><div id="cartItems"><p class="notice">Seu carrinho está vazio.</p></div><div class="cart-total"><span>Subtotal</span><span id="subtotal">R$ 0,00</span></div><div class="field"><label for="coupon">Cupom de desconto</label><input id="coupon" placeholder="Digite seu cupom (opcional)" autocomplete="off"></div><button class="btn secondary" type="button" id="applyCoupon">Aplicar cupom</button><p class="status" id="couponStatus" role="status"></p><p class="small">Descontos negociados precisam ser confirmados pela equipe. O cupom será incluído no pedido do WhatsApp; nenhum desconto é aplicado automaticamente sem uma regra válida cadastrada.</p><button class="btn primary" type="button" id="checkout">Enviar pedido pelo WhatsApp ↗</button></div></section>
+</main><footer class="footer">© <span id="year"></span> Vértice NFC · Valores sujeitos a negociação conforme escopo.</footer>
 </div>
 <script>
 "use strict";
-const WHATSAPP = "5541995196302";
-const catalog = {
-  produtos: [
-    {id:"placa-basica",name:"Placa básica NFC + QR",price:35,desc:"Placa avulsa para direcionar clientes a um link ou página digital.",keys:"básica basica nfc qr placa link"},
-    {id:"placa-personalizada",name:"1 placa personalizada",price:50,desc:"Uma placa com personalização para a identidade do seu negócio.",keys:"personalizada personalização design marca nfc qr"}
-  ],
-  combos: [
-    {id:"combo-menu-10",name:"10 placas + menu",price:500,desc:"Dez placas com menu digital para seu negócio.",keys:"10 placas menu cardápio digital"},
-    {id:"combo-site-menu-10",name:"10 placas + site + menu",price:600,desc:"Dez placas, site e menu digital em um pacote.",keys:"10 placas site menu cardápio"},
-    {id:"combo-personalizadas-10",name:"10 placas personalizadas",price:650,desc:"Dez placas personalizadas para sua marca.",keys:"10 placas personalizadas design marca"},
-    {id:"combo-completo-100",name:"100 placas completas",price:5000,desc:"Lote de cem placas completas para operações de maior volume.",keys:"100 placas completas lote volume"},
-    {id:"combo-personalizadas-100",name:"100 placas personalizadas completas",price:7000,desc:"Cem placas personalizadas completas para operações em escala.",keys:"100 placas personalizadas completas lote volume"}
-  ],
-  servicos: [
-    {id:"manutencao",name:"Manutenção da placa",price:10,period:"/mês",desc:"Manutenção recorrente da placa conforme escopo contratado.",keys:"manutenção manutencao suporte placa mensal"},
-    {id:"menu-digital",name:"Menu digital",price:20,period:"/mês",desc:"Menu digital para apresentar itens e informações do negócio.",keys:"menu cardápio digital mensal"},
-    {id:"site-mensal",name:"Site",price:30,period:"/mês",desc:"Serviço mensal relacionado ao site do seu negócio.",keys:"site página web mensal"}
-  ]
-};
-const money = value => new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(value);
-const normalize = value => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("pt-BR").trim();
-const allItems = Object.values(catalog).flat();
-function whatsappLink(message) {
-  return "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(message);
+const WHATSAPP="5541995196302";
+const catalog={
+produtos:[
+{id:"basic",name:"Placa básica NFC + QR",price:35,desc:"Placa para direcionar clientes a um link ou página digital.",keys:"básica basica nfc qr placa cartão cartao link"},
+{id:"custom",name:"1 placa personalizada",price:50,desc:"Uma placa com identidade visual do seu negócio.",keys:"personalizada design marca cartão cartao customizada"}
+],
+combos:[
+{id:"menu10",name:"10 placas + menu",price:500,desc:"Dez placas com menu digital.",keys:"dez lote quantidade menu cardápio cardapio digital"},
+{id:"site10",name:"10 placas + site + menu",price:600,desc:"Dez placas com site e menu digital.",keys:"dez lote quantidade site website página pagina web menu cardápio"},
+{id:"custom10",name:"10 placas personalizadas",price:650,desc:"Dez placas personalizadas para sua marca.",keys:"dez lote quantidade personalizadas design"},
+{id:"complete100",name:"100 placas completas",price:5000,desc:"Cem placas completas para operações de maior volume.",keys:"cem lote quantidade atacado completas"},
+{id:"custom100",name:"100 placas personalizadas completas",price:7000,desc:"Cem placas personalizadas completas.",keys:"cem lote quantidade atacado personalizadas"}
+],
+servicos:[
+{id:"maintenance",name:"Manutenção da placa",price:10,period:"/mês",desc:"Manutenção recorrente conforme escopo contratado.",keys:"suporte reparo manutenção manutencao mensal assinatura"},
+{id:"menu",name:"Menu digital",price:20,period:"/mês",desc:"Menu digital para apresentar produtos e informações.",keys:"cardápio cardapio catálogo catalogo digital mensal"},
+{id:"webmonthly",name:"Manutenção de site",price:197,period:"/mês",desc:"Suporte e pequenas atualizações conforme contrato.",keys:"manutenção manutencao hospedagem suporte site mensal"}
+],
+sites:[
+{id:"site-basic",name:"Site Básico",price:300,desc:"Página responsiva para apresentar negócio, serviços e contatos.",keys:"site básico basico simples landing page página pagina apresentação apresentacao"},
+{id:"site-intermediate",name:"Site Intermediário",price:700,desc:"Site institucional com seções organizadas e integração com WhatsApp.",keys:"site intermediário intermediario institucional empresa negócio negocio profissional"},
+{id:"site-advanced",name:"Site Avançado",price:2000,desc:"Projeto personalizado com design e funcionalidades conforme necessidade.",keys:"site avançado avancado personalizado integrações integracoes funções funcoes sistema"},
+{id:"site-premium",name:"Site Premium / Enterprise",price:10000,desc:"Solução sob medida para operações complexas e requisitos específicos.",keys:"site premium enterprise empresarial complexo plataforma sistema grande escala"},
+{id:"site-maintenance",name:"Manutenção de site",price:197,period:"/mês",desc:"Suporte e pequenas atualizações dentro do escopo contratado.",keys:"manutenção manutencao suporte correções correcoes atualizações atualizacoes mensal hospedagem"}
+]};
+const allItems=Object.values(catalog).flat();
+const money=n=>new Intl.NumberFormat("pt-BR",{style:"currency",currency:"BRL"}).format(n);
+const normalize=s=>String(s??"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().trim();
+const cart=new Map();
+let appliedCoupon="";
+const couponRules={}; // Cadastre cupons reais aqui, ex.: {BEMVINDO:{type:"percent",value:5}}.
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function wa(message){window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener,noreferrer");}
+function findItem(id){return allItems.find(item=>item.id===id);}
+function itemText(item){return item.name+" — "+money(item.price)+(item.period?" "+item.period:"");}
+function renderCards(){
+ for(const [section,items] of Object.entries(catalog)){
+  const grid=document.querySelector('[data-grid="'+section+'"]');if(!grid)continue;
+  grid.innerHTML=items.map(item=>'<article class="card" data-card data-search="'+escapeHTML(normalize([item.name,item.desc,item.keys].join(" ")))+'"><h3>'+escapeHTML(item.name)+'</h3><p>'+escapeHTML(item.desc)+'</p><div class="price">'+money(item.price)+' <small>'+(item.period||"")+'</small></div><div class="negotiable">Preço negociável conforme escopo</div><div class="card-actions"><button class="btn secondary" type="button" data-add="'+item.id+'">Adicionar</button><button class="btn primary" type="button" data-order="'+item.id+'">Pedir</button></div></article>').join("");
+ }
 }
-function orderMessage(item) {
-  return "Olá! Tenho interesse em " + item.name + " (" + money(item.price) + (item.period ? " " + item.period : "") + "). Gostaria de confirmar os detalhes e como finalizar o pedido. Vim pelo site Vértice NFC.";
+function switchTab(name){const section=document.querySelector('[data-section="'+name+'"]');if(!section)return;document.querySelectorAll("[data-section]").forEach(s=>s.classList.toggle("active",s===section));document.querySelectorAll("[data-tab]").forEach(b=>{const active=b.dataset.tab===name;b.classList.toggle("active",active);b.setAttribute("aria-selected",String(active));});}
+function editDistance(a,b){if(Math.abs(a.length-b.length)>1)return 2;let prev=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){const row=[i];for(let j=1;j<=b.length;j++)row[j]=Math.min(row[j-1]+1,prev[j]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=row;}return prev[b.length];}
+function matches(text,query){
+ if(!query)return true;
+ const hay=normalize(text), words=query.split(/\s+/).filter(Boolean), hayWords=hay.split(/\s+/);
+ return words.every(q=>hay.includes(q)||hayWords.some(w=>w.startsWith(q)||(q.length>=4&&editDistance(q,w)<=1)));
 }
-function openWhatsApp(message) {
-  window.open(whatsappLink(message), "_blank", "noopener,noreferrer");
+function applySearch(){
+ const q=document.getElementById("search").value;
+ document.querySelectorAll("[data-section]").forEach(section=>{
+  if(section.dataset.section==="frete"||section.dataset.section==="carrinho")return;
+  let count=0;
+  section.querySelectorAll("[data-card]").forEach(card=>{const visible=matches(card.dataset.search,q);card.hidden=!visible;if(visible)count++;});
+  const empty=section.querySelector("[data-empty]");if(empty)empty.style.display=count?"none":"block";
+ });
+ if(normalize(q)){
+  const match=allItems.find(item=>matches([item.name,item.desc,item.keys].join(" "),q));
+  if(match)switchTab(Object.keys(catalog).find(key=>catalog[key].some(item=>item.id===match.id)));
+ }
 }
-function renderCards() {
-  for (const [section, items] of Object.entries(catalog)) {
-    const grid = document.querySelector('[data-grid="' + section + '"]');
-    if (!grid) continue;
-    grid.innerHTML = items.map(item => '<article class="card" data-card data-search="' +
-      escapeHtml(normalize([item.name,item.desc,item.keys].join(" "))) + '">' +
-      '<h3>' + escapeHtml(item.name) + '</h3><p>' + escapeHtml(item.desc) + '</p>' +
-      '<div class="price">' + money(item.price) + ' <small>' + (item.period || "") + '</small></div>' +
-      '<button class="btn primary" type="button" data-order="' + escapeHtml(item.id) + '">Pedir pelo WhatsApp ↗</button></article>').join("");
-  }
+function addToCart(id){const item=findItem(id);if(!item)return;cart.set(id,(cart.get(id)||0)+1);renderCart();switchTab("carrinho");}
+function removeFromCart(id){cart.delete(id);renderCart();}
+function subtotal(){return [...cart].reduce((sum,[id,qty])=>sum+findItem(id).price*qty,0);}
+function discount(total){const rule=couponRules[appliedCoupon];if(!rule)return 0;return rule.type==="percent"?total*Math.min(rule.value,100)/100:Math.min(total,Math.max(0,rule.value));}
+function renderCart(){
+ const entries=[...cart];document.getElementById("cartCount").textContent=entries.reduce((n,[,qty])=>n+qty,0);
+ const box=document.getElementById("cartItems");
+ box.innerHTML=entries.length?entries.map(([id,qty])=>{const item=findItem(id);return '<div class="cart-row"><div><strong>'+escapeHTML(item.name)+'</strong><p>'+qty+' × '+itemText(item)+'</p></div><strong>'+money(item.price*qty)+'</strong><button type="button" data-remove="'+id+'" aria-label="Remover '+escapeHTML(item.name)+'">Remover</button></div>';}).join(""):'<p class="notice">Seu carrinho está vazio.</p>';
+ const total=subtotal()-discount(subtotal());document.getElementById("subtotal").textContent=money(subtotal());
+ if(appliedCoupon&&couponRules[appliedCoupon])document.getElementById("subtotal").textContent=money(total)+" (cupom aplicado)";
 }
-function escapeHtml(value) {
-  return String(value).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+function applyCoupon(){
+ const code=document.getElementById("coupon").value.trim().toUpperCase();
+ const status=document.getElementById("couponStatus");
+ if(!code){appliedCoupon="";status.textContent="Digite um cupom para consultar.";renderCart();return;}
+ if(couponRules[code]){appliedCoupon=code;status.textContent="Cupom reconhecido. O desconto foi calculado.";renderCart();}
+ else{appliedCoupon=code;status.textContent="Cupom anotado para a equipe confirmar. Nenhum desconto automático aplicado.";renderCart();}
 }
-function switchTab(name) {
-  const section = document.querySelector('[data-section="' + name + '"]');
-  if (!section) return;
-  document.querySelectorAll("[data-section]").forEach(node => node.classList.toggle("active", node === section));
-  document.querySelectorAll("[data-tab]").forEach(button => {
-    const active = button.dataset.tab === name;
-    button.classList.toggle("active", active);
-    button.setAttribute("aria-selected", String(active));
-  });
-  applySearch();
+function checkout(){
+ if(!cart.size){document.getElementById("couponStatus").textContent="Adicione pelo menos um item ao carrinho.";return;}
+ const lines=[...cart].map(([id,qty])=>qty+" × "+itemText(findItem(id))).join("\n");
+ const code=document.getElementById("coupon").value.trim();
+ wa("Olá! Quero solicitar um pedido na Vértice NFC:\n"+lines+"\nSubtotal dos itens: "+money(subtotal())+"\nCupom informado: "+(code||"Nenhum")+"\nGostaria de confirmar disponibilidade, eventual desconto negociado, escopo e valor final. Vim pelo site Vértice NFC.");
 }
-function applySearch() {
-  const query = normalize(document.getElementById("search").value);
-  document.querySelectorAll("[data-section]").forEach(section => {
-    if (section.dataset.section === "frete") return;
-    let count = 0;
-    section.querySelectorAll("[data-card]").forEach(card => {
-      const visible = !query || card.dataset.search.includes(query);
-      card.hidden = !visible;
-      if (visible) count++;
-    });
-    const empty = section.querySelector("[data-empty]");
-    if (empty) empty.style.display = count ? "none" : "block";
-  });
-  if (!query) return;
-  const match = allItems.find(item => normalize([item.name,item.desc,item.keys].join(" ")).includes(query));
-  if (match) {
-    const sectionName = Object.keys(catalog).find(name => catalog[name].some(item => item.id === match.id));
-    switchTab(sectionName);
-  }
-}
-document.addEventListener("click", event => {
-  const tab = event.target.closest("[data-tab]");
-  if (tab) { switchTab(tab.dataset.tab); return; }
-  const order = event.target.closest("[data-order]");
-  if (order) {
-    const item = allItems.find(product => product.id === order.dataset.order);
-    if (item) openWhatsApp(orderMessage(item));
-  }
+document.addEventListener("click",event=>{
+ const target=event.target.closest("button");if(!target)return;
+ if(target.dataset.tab){switchTab(target.dataset.tab);return;}
+ if(target.dataset.add){addToCart(target.dataset.add);return;}
+ if(target.dataset.remove){removeFromCart(target.dataset.remove);return;}
+ if(target.dataset.order){const item=findItem(target.dataset.order);if(item)wa("Olá! Tenho interesse em "+itemText(item)+". O preço pode ser negociado conforme o escopo. Gostaria de confirmar os detalhes. Vim pelo site Vértice NFC.");return;}
 });
-document.getElementById("search").addEventListener("input", applySearch);
-document.getElementById("explore").addEventListener("click", () => switchTab("produtos"));
-document.getElementById("cep").addEventListener("input", event => {
-  const digits = event.target.value.replace(/\D/g,"").slice(0,8);
-  event.target.value = digits.length > 5 ? digits.slice(0,5) + "-" + digits.slice(5) : digits;
-});
-document.getElementById("freteForm").addEventListener("submit", event => {
-  event.preventDefault();
-  const cep = document.getElementById("cep").value.replace(/\D/g,"");
-  if (cep.length !== 8) { document.getElementById("cep").setCustomValidity("Informe um CEP válido com 8 dígitos."); document.getElementById("cep").reportValidity(); return; }
-  document.getElementById("cep").setCustomValidity("");
-  const quantity = document.getElementById("quantidade").value;
-  const mode = document.getElementById("modalidade").value;
-  openWhatsApp("Olá! Gostaria de cotar o frete da Vértice NFC.\nCEP: " + cep + "\nQuantidade: " + quantity + "\nModalidade: " + mode + "\nPor favor, confirmem o valor e o prazo antes do pagamento.");
-});
-document.getElementById("year").textContent = new Date().getFullYear();
-renderCards();
-applySearch();
+document.getElementById("search").addEventListener("input",applySearch);
+document.getElementById("applyCoupon").addEventListener("click",applyCoupon);
+document.getElementById("checkout").addEventListener("click",checkout);
+document.getElementById("cep").addEventListener("input",event=>{const d=event.target.value.replace(/\D/g,"").slice(0,8);event.target.value=d.length>5?d.slice(0,5)+"-"+d.slice(5):d;});
+document.getElementById("freteForm").addEventListener("submit",event=>{event.preventDefault();const cep=document.getElementById("cep").value.replace(/\D/g,"");if(cep.length!==8){document.getElementById("cep").setCustomValidity("Informe um CEP válido com 8 dígitos.");document.getElementById("cep").reportValidity();return;}document.getElementById("cep").setCustomValidity("");wa("Olá! Quero cotar o frete da Vértice NFC.\nCEP: "+cep+"\nQuantidade: "+document.getElementById("quantidade").value+"\nModalidade: "+document.getElementById("modalidade").value+"\nPor favor, confirmem valor e prazo reais antes do pagamento.");});
+document.getElementById("year").textContent=new Date().getFullYear();
+renderCards();renderCart();applySearch();
 </script>
 </body>
 </html>

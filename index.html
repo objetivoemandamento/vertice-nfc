@@ -12,6 +12,19 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 
 
+
+/* Correção visual focada no verso do cartão: QR + NFC sempre presentes na face traseira */
+.card-model{position:relative;transform-style:preserve-3d!important}
+.card-model>.face-frente,.card-model>.face-verso{position:absolute!important;inset:0!important;display:flex!important;backface-visibility:hidden!important;-webkit-backface-visibility:hidden!important;overflow:hidden!important}
+.card-model>.face-frente{transform:rotateY(0deg) translateZ(1px)!important}
+.card-model>.face-verso{transform:rotateY(180deg) translateZ(1px)!important;visibility:visible!important;opacity:1!important;justify-content:center!important;align-items:center!important}
+.card-model>.face-verso>.back-tools{display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:center!important;gap:22px!important;width:100%!important;height:100%!important}
+.card-model>.face-verso .model-qr{display:grid!important;grid-template-columns:repeat(9,5px)!important;grid-auto-rows:5px!important;gap:2px!important;padding:7px!important;background:#fff!important;border:1px solid #dffaff!important;flex:none!important}
+.card-model>.face-verso .model-qr i{display:block!important;width:5px!important;height:5px!important;background:#071018!important}
+.card-model>.face-verso .model-qr i:nth-child(3n),.card-model>.face-verso .model-qr i:nth-child(7n){background:#fff!important}
+.card-model>.face-verso .nfc-mark{display:flex!important;align-items:center!important;justify-content:center!important;visibility:visible!important;opacity:1!important;color:#67e8f9!important;flex:none!important}
+.card-model>.face-verso .nfc-mark svg{display:block!important;width:36px!important;height:36px!important}
+
 /* Renderização robusta: faces explícitas do cartão e placa em perspectiva estilizada */
 .face-frente{transform:rotateY(0deg) translateZ(1px);backface-visibility:hidden}
 .face-verso{transform:rotateY(180deg) translateZ(1px);backface-visibility:hidden}

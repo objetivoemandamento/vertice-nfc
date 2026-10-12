@@ -10,6 +10,31 @@
 @media(max-width:850px){.nav{gap:8px}.brand{margin-right:auto}.tabs{order:3;flex-basis:100%;width:100%}.search{flex:1;width:auto;min-width:0}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:35px}}
 @media(max-width:520px){.wrap{width:calc(100% - 22px)}.grid{grid-template-columns:1fr}.card{padding:16px}.hero h1{letter-spacing:-1px}.form,.cart-panel{padding:15px}.section{padding-top:17px}.cart-row{align-items:flex-start}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+/* Vitrine 3D: CSS puro, sem motor WebGL ou dependências externas */
+.vitrine{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(0,2fr);gap:16px;align-items:stretch}
+.vitrine-list,.stage{border:1px solid #67e8f92b;border-radius:18px;background:#0b121ddd;backdrop-filter:blur(12px);padding:16px;min-width:0}
+.vitrine-list h3{margin:0 0 12px;font-size:14px}
+.vitrine-choice{width:100%;display:flex;align-items:center;gap:10px;text-align:left;padding:12px;margin:6px 0;border:1px solid var(--line);border-radius:12px;background:#111a27aa;color:var(--text);cursor:pointer}
+.vitrine-choice[aria-pressed="true"]{border-color:var(--cyan);box-shadow:0 0 0 1px #67e8f933,0 0 22px #00d9ff13;background:#112735}
+.choice-icon{display:grid;place-items:center;width:38px;height:30px;border:1px solid #67e8f966;border-radius:7px;color:var(--cyan);font-size:10px;font-weight:900;flex:none}
+.vitrine-choice strong{display:block;font-size:12px}.vitrine-choice small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.stage{display:flex;flex-direction:column;gap:14px}
+.stage-head{display:flex;justify-content:space-between;gap:10px;align-items:start}.stage-head h2{font-size:clamp(22px,4vw,32px);margin:4px 0;line-height:1.2}.stage-head p{margin:0;color:var(--muted);font-size:12px}
+.stage-pill{border:1px solid #67e8f944;color:var(--cyan);padding:5px 8px;border-radius:99px;font-size:10px;white-space:nowrap}
+.product-view{display:grid;place-items:center;min-height:300px;overflow:hidden;border:1px solid #67e8f91f;border-radius:14px;background:radial-gradient(ellipse at center,#0e2a3a 0%,#09121e 48%,#080d15 100%);perspective:900px;touch-action:pan-y;user-select:none;cursor:grab}
+.product-view:active{cursor:grabbing}
+.product-model{position:relative;transform-style:preserve-3d;will-change:transform;transition:transform .08s linear}
+.product-model.card-model{width:220px;height:138px}.product-model.plate-model{width:188px;height:188px}
+.model-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:1px solid #b9faff88;border-radius:13px;backface-visibility:hidden;background:linear-gradient(145deg,var(--model-color,#122a3a),#070b12 80%);box-shadow:inset 0 0 24px #67e8f91c,0 0 32px #00d9ff1c;color:#f4fbff;overflow:hidden}
+.plate-model .model-face{border-radius:17px;border-width:2px}.model-face:before{content:"";position:absolute;inset:7px;border:1px solid #67e8f94a;border-radius:9px;pointer-events:none}
+.model-face.back{transform:rotateY(180deg);background:linear-gradient(145deg,#101923,#070a0e)}
+.model-brand{font-size:10px;letter-spacing:.22em;color:var(--cyan);font-weight:900}.model-label{font-size:18px;font-weight:850;max-width:85%;overflow-wrap:anywhere;text-align:center;line-height:1.15}.model-sub{font-size:9px;letter-spacing:.15em;color:#a9c3d4}.model-chip{width:30px;height:23px;border:1px solid #d7f8ff;border-radius:5px;background:repeating-linear-gradient(90deg,#c9d6ce 0 2px,#667f7d 2px 4px);opacity:.9}.model-qr{display:grid;grid-template-columns:repeat(5,5px);gap:2px;padding:5px;border:1px solid #dffaff;background:#fff}.model-qr i{width:5px;height:5px;background:#071018}.model-qr i:nth-child(2n),.model-qr i:nth-child(5n){background:#fff}
+.drag-hint{font-size:11px;color:var(--muted);text-align:center;margin-top:-6px}
+.custom-controls{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px}.custom-controls .field{margin:0}.custom-controls label{font-size:11px}.custom-controls input,.custom-controls select{font-size:12px}.stage-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.stage-price{font-size:21px;font-weight:850}.stage-price small{font-size:11px;color:var(--muted);font-weight:500}.stage-note{color:var(--muted);font-size:11px}
+@media(max-width:680px){.vitrine{grid-template-columns:1fr}.vitrine-list{padding:12px}.vitrine-list .choice-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}.vitrine-choice{margin:0;padding:9px;gap:7px}.choice-icon{width:30px;height:28px}.vitrine-choice strong{font-size:11px}.product-view{min-height:265px}.custom-controls{grid-template-columns:1fr 1fr}.custom-controls .field:first-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){.product-model{transition:none}}
+
 </style>
 </head>
 <body>
@@ -17,6 +42,7 @@
 <a class="brand" href="#inicio">VÉRTICE <span>NFC</span></a>
 <nav class="tabs" aria-label="Navegação principal">
 <button class="tab active" type="button" data-tab="produtos" aria-selected="true">Produtos</button>
+<button class="tab" type="button" data-tab="vitrine3d" aria-selected="false">Vitrine 3D</button>
 <button class="tab" type="button" data-tab="combos" aria-selected="false">Planos & Combos</button>
 <button class="tab" type="button" data-tab="servicos" aria-selected="false">Serviços Recorrentes</button>
 <button class="tab" type="button" data-tab="sites" aria-selected="false">Sites</button>
@@ -28,6 +54,34 @@
 <div class="wrap" id="inicio">
 <section class="hero"><div class="eyebrow">Conectividade para negócios</div><h1>Seu negócio.<br><span>Um toque à frente.</span></h1><p class="lead">Placas NFC, QR Code, sites e serviços digitais para conectar clientes ao seu negócio. Precisa de algo específico? Pesquise por uma ideia ou fale conosco.</p><button class="btn primary" type="button" data-tab="produtos">Explorar soluções ↓</button></section>
 <main id="catalogo">
+
+<section class="section" data-section="vitrine3d">
+ <div class="heading"><div class="eyebrow">Personalização interativa</div><h2>Monte sua placa</h2><p class="desc">Escolha um modelo, gire para inspecionar e personalize antes de solicitar seu orçamento.</p></div>
+ <div class="vitrine">
+  <aside class="vitrine-list" aria-label="Tipos de produtos"><h3>Escolha seu produto</h3><div class="choice-list">
+   <button class="vitrine-choice" type="button" data-model="card" data-custom="normal" aria-pressed="true"><span class="choice-icon">NFC</span><span><strong>Cartão NFC Normal</strong><small>Cartão padrão</small></span></button>
+   <button class="vitrine-choice" type="button" data-model="card" data-custom="personalizado" aria-pressed="false"><span class="choice-icon">✦</span><span><strong>Cartão NFC Personalizado</strong><small>Com sua identidade</small></span></button>
+   <button class="vitrine-choice" type="button" data-model="plate" data-custom="normal" aria-pressed="false"><span class="choice-icon">▦</span><span><strong>Placa NFC Normal</strong><small>Placa padrão</small></span></button>
+   <button class="vitrine-choice" type="button" data-model="plate" data-custom="personalizado" aria-pressed="false"><span class="choice-icon">✧</span><span><strong>Placa NFC Personalizada</strong><small>Com sua identidade</small></span></button>
+  </div></aside>
+  <div class="stage">
+   <div class="stage-head"><div><div class="eyebrow">Vértice NFC / Studio</div><h2 id="modelTitle">Cartão NFC Normal</h2><p id="modelDescription">Visualização demonstrativa do formato do produto.</p></div><span class="stage-pill">CSS 3D · Interativo</span></div>
+   <div class="product-view" id="productView" aria-label="Arraste para girar o modelo do produto" role="application">
+    <div class="product-model card-model" id="productModel" style="--model-color:#123246">
+     <div class="model-face front"><span class="model-brand">VÉRTICE NFC</span><span class="model-chip"></span><span class="model-label" id="modelTextFront">SEU NEGÓCIO</span><span class="model-sub">TOQUE · CONECTE</span></div>
+     <div class="model-face back"><span class="model-brand">VÉRTICE</span><span class="model-qr"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="model-sub">NFC + QR CODE</span></div>
+    </div>
+   </div>
+   <div class="drag-hint">↔ Arraste com o mouse ou dedo para girar em 360°</div>
+   <div class="custom-controls">
+    <div class="field"><label for="customText">Texto na personalização</label><input id="customText" maxlength="28" placeholder="Nome do negócio" value="SEU NEGÓCIO"></div>
+    <div class="field"><label for="modelColor">Cor</label><select id="modelColor"><option value="#123246">Azul petróleo</option><option value="#111318">Preto premium</option><option value="#5c2d91">Roxo neon</option><option value="#e8e9ec">Prata claro</option><option value="#123e32">Verde escuro</option></select></div>
+    <div class="field"><label for="modelFinish">Acabamento</label><select id="modelFinish"><option value="Fosco">Fosco</option><option value="Brilhante">Brilhante</option><option value="Metalizado">Metalizado</option></select></div>
+   </div>
+   <div class="stage-bottom"><div><div class="stage-price" id="modelPrice">R$ 35,00 <small>valor inicial</small></div><div class="stage-note">Personalização e preço final sujeitos à confirmação.</div></div><button class="btn primary" id="modelOrder" type="button">Personalizar no WhatsApp ↗</button></div>
+  </div>
+ </div>
+</section>
 <section class="section active" data-section="produtos"><div class="heading"><div class="eyebrow">Conheça as opções</div><h2>Produtos</h2><p class="desc">Placas avulsas para começar.</p></div><div class="grid" data-grid="produtos"></div><p class="empty" data-empty="produtos">Nenhum resultado semelhante. Tente outros termos, como NFC, cartão, placa ou personalizada.</p></section>
 <section class="section" data-section="combos"><div class="heading"><div class="eyebrow">Para crescer</div><h2>Planos & Combos</h2><p class="desc">Pacotes para negócios de diferentes tamanhos.</p></div><div class="grid" data-grid="combos"></div><p class="empty" data-empty="combos">Nenhum combo encontrado. Tente termos como lote, quantidade, menu ou personalizado.</p></section>
 <section class="section" data-section="servicos"><div class="heading"><div class="eyebrow">Suporte contínuo</div><h2>Serviços recorrentes</h2><p class="desc">Mensalidades para manter suas soluções digitais.</p></div><div class="grid" data-grid="servicos"></div><p class="empty" data-empty="servicos">Nenhum serviço encontrado. Tente menu, manutenção, hospedagem ou site.</p></section>
@@ -146,6 +200,33 @@ if(matchMedia("(hover:hover) and (pointer:fine)").matches&&!matchMedia("(prefers
  });
  document.addEventListener("pointerout",event=>{const card=event.target.closest?.(".card");if(card&&!card.contains(event.relatedTarget)){card.style.setProperty("--rx","0deg");card.style.setProperty("--ry","0deg");}});
 }
+
+/* Vitrine 3D por CSS: apenas transforma um elemento, sem canvas/WebGL. */
+const showcase={type:"card",custom:"normal",price:35,name:"Cartão NFC Normal",rx:-12,ry:-24,drag:false,x:0,y:0};
+const modelEl=document.getElementById("productModel"), viewEl=document.getElementById("productView");
+function updateShowcase(){
+ const custom=showcase.custom==="personalizado";
+ showcase.name=(showcase.type==="card"?"Cartão":"Placa")+" NFC "+(custom?"Personalizado":"Normal");
+ showcase.price=showcase.type==="card"?(custom?50:35):(custom?50:35);
+ document.getElementById("modelTitle").textContent=showcase.name;
+ document.getElementById("modelDescription").textContent=showcase.type==="card"?"Formato de cartão compacto com NFC + QR Code.":"Formato de placa para balcão ou ponto de atendimento.";
+ document.getElementById("modelPrice").innerHTML=money(showcase.price)+' <small>valor inicial</small>';
+ modelEl.className="product-model "+(showcase.type==="card"?"card-model":"plate-model");
+ document.querySelectorAll("[data-model]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.model===showcase.type&&b.dataset.custom===showcase.custom)));
+ document.getElementById("modelTextFront").textContent=(document.getElementById("customText").value.trim()||"SEU NEGÓCIO").slice(0,28).toUpperCase();
+ modelEl.style.setProperty("--model-color",document.getElementById("modelColor").value);
+ modelEl.style.filter=document.getElementById("modelFinish").value==="Brilhante"?"brightness(1.2) saturate(1.15)":document.getElementById("modelFinish").value==="Metalizado"?"contrast(1.15) saturate(.7)":"none";
+ modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";
+}
+document.querySelectorAll("[data-model]").forEach(b=>b.addEventListener("click",()=>{showcase.type=b.dataset.model;showcase.custom=b.dataset.custom;updateShowcase();}));
+["customText","modelColor","modelFinish"].forEach(id=>document.getElementById(id).addEventListener("input",updateShowcase));
+viewEl.addEventListener("pointerdown",e=>{showcase.drag=true;showcase.x=e.clientX;showcase.y=e.clientY;viewEl.setPointerCapture(e.pointerId);});
+viewEl.addEventListener("pointermove",e=>{if(!showcase.drag)return;const dx=e.clientX-showcase.x,dy=e.clientY-showcase.y;showcase.x=e.clientX;showcase.y=e.clientY;showcase.ry+=dx*.7;showcase.rx=Math.max(-180,Math.min(180,showcase.rx-dy*.7));modelEl.style.transform="rotateX("+showcase.rx+"deg) rotateY("+showcase.ry+"deg)";});
+function stopModelDrag(){showcase.drag=false;}
+viewEl.addEventListener("pointerup",stopModelDrag);viewEl.addEventListener("pointercancel",stopModelDrag);viewEl.addEventListener("lostpointercapture",stopModelDrag);
+document.getElementById("modelOrder").addEventListener("click",()=>{const text=document.getElementById("customText").value.trim()||"Não definido";const color=document.getElementById("modelColor").selectedOptions[0].text;const finish=document.getElementById("modelFinish").value;wa("Olá! Quero solicitar orçamento para "+showcase.name+".\nTexto: "+text+"\nCor: "+color+"\nAcabamento: "+finish+"\nValor inicial exibido: "+money(showcase.price)+"\nPor favor, confirmem personalização, disponibilidade, prazo e preço final.");});
+updateShowcase();
+
 renderCards();renderCart();applySearch();
 </script>
 </body>
